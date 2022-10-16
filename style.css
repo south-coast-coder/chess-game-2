@@ -1,0 +1,18 @@
+.square1{
+	backround-color: white;
+	height: 5vw;
+	width: 5vw;
+	f
+}
+.square2{
+	background-color: black;
+	height: 5vw;
+	width: 5vw;
+	
+}
+.piece{
+	height: 2.5vw;
+	width: 2.5vw;
+	margin-top: 1vw;
+	margin-left: 1vw;
+}
