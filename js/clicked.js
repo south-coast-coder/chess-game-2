@@ -1,5 +1,5 @@
 function clicked(piece,square){
-	console.log(piece)
+	alert(piece)
 	var piece=piece
 	var name=document.getElementById(piece).parentElement.id
 	alert (name)
