@@ -6,7 +6,7 @@
 	 <link rel="stylesheet" href="style.css">
 	<title>Chess</title>
 </head>
-<body>
+<body onload="turn()">
 <div id="board" style="display: flex;flex-wrap: wrap;">
  <div class="row" style="width: 100%;display: flex;flex-wrap: wrap;">
 	<div class="square1" id="One1"><img src="rook.png" alt="" class="piece" id="piece1"onclick="clicked('piece','test')"></div>
@@ -20,8 +20,8 @@
 </div>
 
 <div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
-     <div class="square2" id="Two1" onclick="move('Two1')"></div>
-     <div class="square1" id="Two2" onclick="move('Two2')"></div>
+     <div class="square2" id="Two1" onclick="move('Two1')"><img src="rook2.png" alt="" class="bpiece" id="bpiece1"></div>
+     <div class="square1" id="Two2" onclick="move('Two2')"><img src="rook2.png" alt="" class="bpiece" id="bpiece1"></div>
      <div class="square2"id="Two3" onclick="move('Two3')"></div>
      <div class="square1" id="Two4" onclick="move('Two4')"></div>
      <div class="square2"id="Two5" onclick="move('Two5')"></div>
@@ -98,5 +98,7 @@
  <!-- JS scripts --->
  <script src ="js/clicked.js"></script>
  <script src ="js/move.js"></script>
+ <script src="js/turn.js"></script>
+
 </body>
 </html>
