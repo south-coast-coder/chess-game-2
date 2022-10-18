@@ -31,7 +31,7 @@ function move(square){
 		alert("current" + current)
 		var targ=(document.getElementById(targetSquare))
 		alert("target" +targ.id)
-		document.getElementById(targetSquare).innerHTML = '<img src="'+piece+'"alt="" class="piece" id='+ current +' onclick="clicked('+current +','+targ+')>'; //puts piece in new square
+		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
         document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
          if (turn =="white"){
     	localStorage.setItem("turn","black")
@@ -61,7 +61,7 @@ function move(square){
 	}
 	
 	
-	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id='+ current +' onclick="clicked(current,"One1")>'; //puts piece in new square
+	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
     alert("to replace" + lastSquare)
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
     if (turn =="white"){
