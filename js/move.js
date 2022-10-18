@@ -5,6 +5,17 @@ function move(square){
 	var lastSquare=localStorage.getItem('currentSquare');
 	var turn = localStorage.getItem("turn")
 	var targetSquare=(square)   // load the last clicked piece (current), the square it was on and the target square
+	//Check how far away target is (later will have different pieces)
+	alert("Difference between Rows")
+	alert(targetSquare[0])
+	alert(lastSquare[0])
+	alert("Difference between columns")
+	alert(targetSquare.slice(-1))
+	alert(lastSquare.slice(-1))
+
+	// One Two Thre Fou Fiv Six Sev Eig  
+	// if target ....slice (1,3) == ""...= 1 }(i.e turn into numerical then check difference)
+ 
 	if (turn == 'white'){
 		alert("White's turn")
 		var firstLetter = "p"
