@@ -1,17 +1,50 @@
 function move(square){
 
+	var nums = [1,2,3,4,5,6,7,8]
+	var numsLet = ["One","Two","Three","Four","Five","Six","Seven",'Eight']
+
 	alert("MOVE FUNCTION")  //when user clicks on square calls this plus passes its name as argument
 	var current=localStorage.getItem('currentPiece')
 	var lastSquare=localStorage.getItem('currentSquare');
 	var turn = localStorage.getItem("turn")
 	var targetSquare=(square)   // load the last clicked piece (current), the square it was on and the target square
 	//Check how far away target is (later will have different pieces)
-	alert("Difference between Rows")
-	alert(targetSquare[0])
-	alert(lastSquare[0])
-	alert("Difference between columns")
-	alert(targetSquare.slice(-1))
-	alert(lastSquare.slice(-1))
+	
+	var targCol = targetSquare.slice(-1)
+	var currentCol = lastSquare.slice(-1)
+	var targRow = targetSquare.substr(0, targetSquare.length - 1)
+	var currentRow = lastSquare.substr(0,lastSquare.length -1)
+	alert("currentRow now" + currentRow)
+	for (var i in numsLet){   //Convert column name from string to number so can compare difference
+		
+		if (targRow ==numsLet[i]){
+			var targRow=nums[i]
+           
+	}
+    }
+    for (var i in numsLet){   //Convert column name from string to number so can compare difference
+		
+		if (currentRow ==numsLet[i]){
+			var currentRow=nums[i]
+           
+    }
+     }  
+
+   
+    alert("Targ Row" + targRow + "TargCol"+targCol+"current Row"+currentRow +"Current Col"+currentCol)
+    alert("Col diff" + (targCol-currentCol))
+
+    alert("Row diff" + (targRow - currentRow))
+    if ((targCol-currentCol) > 1){
+    	alert("Greater")
+    	return
+
+    }
+    if ((targCol - currentCol) > 1 || (targRow - currentRow > 1)|| (targRow-currentRow < 0)){  //testing change this and generalise once works - this is for pawns
+    	alert("Invalid move ")  //above last means cant's move'bkacwards' IS THIS RIGHT?
+    	return
+    	
+    }
 
 	// One Two Thre Fou Fiv Six Sev Eig  
 	// if target ....slice (1,3) == ""...= 1 }(i.e turn into numerical then check difference)
@@ -81,6 +114,8 @@ function move(square){
     if (turn =="black"){
     	localStorage.setItem("turn","white")
     }
-   }
+   
    
 }
+}
+

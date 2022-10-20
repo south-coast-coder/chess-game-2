@@ -1,11 +1,11 @@
 function clicked(piece,square){
 	alert("Clicked")
-	alert(piece)
+	
 	var piece=piece
-	alert("parent"+document.getElementById(piece).parentElement.id)
+	
 	try {
 		var name =document.getElementById(piece).parentElement.id
-		alert("Exists")
+		
 		localStorage.setItem('currentPiece', piece);
 	    localStorage.setItem('currentSquare', name);
 	}
