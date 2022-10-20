@@ -5,6 +5,18 @@ function move(square){
 
 	alert("MOVE FUNCTION")  //when user clicks on square calls this plus passes its name as argument
 	var current=localStorage.getItem('currentPiece')
+	function checkPiece(current){    //first check which piece is being moved to determine how it can be moved
+            num=current.slice(-1)
+            if(num < 9){
+            	return
+            }
+            else{
+            	
+            	alert("current piece is a castle")
+            	return true
+            }
+	}
+	var isCastle=checkPiece(current)
 	var lastSquare=localStorage.getItem('currentSquare');
 	var turn = localStorage.getItem("turn")
 	var targetSquare=(square)   // load the last clicked piece (current), the square it was on and the target square
@@ -35,13 +47,20 @@ function move(square){
     alert("Col diff" + (targCol-currentCol))
 
     alert("Row diff" + (targRow - currentRow))
+    if (isCastle){
+    	alert("IsCastle")
+    	if((targRow!=currentRow && currentCol !=targCol)){
+    		alert("Not Same row or col")
+    		return
+    	}
+    }
     if ((targCol-currentCol) > 1){
     	alert("Greater")
     	return
 
     }
     if ((targCol - currentCol) > 1 || (targRow - currentRow > 1)|| (targRow-currentRow < 0)){  //testing change this and generalise once works - this is for pawns
-    	alert("Invalid move ")  //above last means cant's move'bkacwards' IS THIS RIGHT?
+    	alert("Invalid move ")  //above last means cant's move'bkacwards' IS THIS
     	return
     	
     }
@@ -52,12 +71,22 @@ function move(square){
 	if (turn == 'white'){
 		alert("White's turn")
 		var firstLetter = "p"
+		if (isCastle){
+			var piece="castle.png"
+		}
+		else{
 		var piece = "rook.png"
+	    }
 	}
 	else{
 		alert("Black's turn")
 		var firstLetter="b"
+		if (isCastle){
+			var piece="castle.png"
+		}
+		else{
 		var piece = "rook2.png"
+	}
 	}               //check whose turn it is 
 	alert("current=" + current)
 	if (turn == "white" & current[0]!=="p"){   //check currently selected piece is of the right colour
