@@ -59,7 +59,7 @@ function move(square){
     	return
 
     }
-    if ((targCol - currentCol) > 1 || (targRow - currentRow > 1)|| (targRow-currentRow < 0)){  //testing change this and generalise once works - this is for pawns
+    if ((isCastle===false) && ((targCol - currentCol) > 1 || (targRow - currentRow > 1)|| (targRow-currentRow < 0))){  //testing change this and generalise once works - this is for pawns
     	alert("Invalid move ")  //above last means cant's move'bkacwards' IS THIS
     	return
     	

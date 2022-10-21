@@ -1,5 +1,5 @@
 function turn(){
-	localStorage.setItem("turn","white")
+	localStorage.setItem("turn","black")
 	var turn = localStorage.getItem("turn")
 	alert("it is " + turn + "s turn")
 	var lastPiece = localStorage.getItem("currentPiece") //clear current piece from local storage

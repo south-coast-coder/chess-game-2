@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  <!--- to do - add responsive styles so board takes up most of screen on mobile plus add a running score next to it --->
 <html>
 <head>
 	<meta charset="utf-8">
@@ -41,56 +41,56 @@
 </div>
 
 <div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
-     <div class="square2"></div>
-     <div class="square1"></div>
-     <div class="square2"></div>
-     <div class="square1"></div>
-     <div class="square2"></div>
-     <div class="square1"></div>
-     <div class="square2"></div>
-     <div class="square1"></div>
+     <div class="square2" id="Four1" onclick="move('Four1')"></div>
+     <div class="square1"id="Four2" onclick="move('Four2')"></div>
+     <div class="square2"id="Four3" onclick="move('Four3')"></div>
+     <div class="square1" id="Four4" onclick="move('Four4')"></div>
+     <div class="square2" id="Four5" onclick="move('Four5')"></div>
+     <div class="square1"id="Four6" onclick="move('Four6')"></div>
+     <div class="square2"id="Four7" onclick="move('Four7')"></div>
+     <div class="square1"id="Four8" onclick="move('Three8')"></div>
 </div>
 <div class="row" style="width: 100%;display: flex;flex-wrap: wrap;">
-	<div class="square1"></div>
-	<div class="square2"></div>
-	<div class="square1"></div>
-	<div class="square2"></div>
-	<div class="square1"></div>
-	<div class="square2"></div>
-	<div class="square1"></div>
-	<div class="square2"></div>
+	<div class="square1" id="Five1" onclick="move('Five1')"></div>
+	<div class="square2"id="Five2" onclick="move('Five2')"></div>
+	<div class="square1"id="Five3" onclick="move('Five3')"></div>
+	<div class="square2"id="Five4" onclick="move('Five4')"></div>
+	<div class="square1"id="Five5" onclick="move('Five5')"></div>
+	<div class="square2"id="Five6" onclick="move('Five6')"></div>
+	<div class="square1"id="Five7" onclick="move('Five7')"></div>
+	<div class="square2"id="Five8" onclick="move('Five8)"></div>
 </div>
 
 <div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
-     <div class="square2"></div>
-     <div class="square1"></div>
-     <div class="square2"></div>
-     <div class="square1"></div>
-     <div class="square2"></div>
-     <div class="square1"></div>
-     <div class="square2"></div>
-     <div class="square1"></div>
+     <div class="square2"id="Six1" onclick="move('Six1')"></div>
+     <div class="square1"id="Six2" onclick="move('Six2')"></div>
+     <div class="square2"id="Six3" onclick="move('Six3')"></div>
+     <div class="square1"id="Six4" onclick="move('Six4')"></div>
+     <div class="square2"id="Six5" onclick="move('Six5')"></div>
+     <div class="square1"id="Six6" onclick="move('Six6')"></div>
+     <div class="square2"id="Six7" onclick="move('Six7')"></div>
+     <div class="square1"id="Six8" onclick="move('Six8')"></div>
 </div>
 <div class="row" style="width: 100%;display: flex;flex-wrap: wrap;">
-	<div class="square1"></div>
-	<div class="square2"></div>
-	<div class="square1"></div>
-	<div class="square2"></div>
-	<div class="square1"></div>
-	<div class="square2"></div>
-	<div class="square1"></div>
-	<div class="square2"></div>
+	<div class="square1"id="Seven1" onclick="move('Seven1')"></div>
+	<div class="square2"id="Seven2" onclick="move('Seven2')"><img src="castle.png" class="piece" id="bpiece9" onclick="clicked('bpiece9','Seven2')"></div>
+	<div class="square1"id="Seven3" onclick="move('Seven3')"></div>
+	<div class="square2"id="Seven4" onclick="move('Seven4')"></div>
+	<div class="square1"id="Seven5" onclick="move('Seven5')"></div>
+	<div class="square2"id="Seven6" onclick="move('Seven6')"></div>
+	<div class="square1"id="Seven7" onclick="move('Seven7')"></div>
+	<div class="square2"id="Seven8" onclick="move('Seven8')"></div>
 </div>
 
 <div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
-     <div class="square2"> <img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square1"><img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square2"><img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square1"><img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square2"><img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square1"><img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square2"><img src="rook2.png" alt="" class="bpiece"></div>
-     <div class="square1"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square2"id="Seven1" onclick="move('Seven1')"> <img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square1"id="Seven2" onclick="move('Seven2')"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square2"id="Seven3" onclick="move('Seven3')"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square1"id="Seven4" onclick="move('Seven4')"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square2"id="Seven5" onclick="move('Seven5')"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square1"id="Seven6" onclick="move('Seven6')"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square2"id="Seven7" onclick="move('Seven7')"><img src="rook2.png" alt="" class="bpiece"></div>
+     <div class="square1"id="Seven8" onclick="move('Seven8')"><img src="rook2.png" alt="" class="bpiece"></div>
 </div>
 </div>
  <!-- ul#nav>li.item$*4>a{Item $} (emmet example)--->
