@@ -6,7 +6,7 @@ function move(square){
 	alert("MOVE FUNCTION")  //when user clicks on square calls this plus passes its name as argument
 	var current=localStorage.getItem('currentPiece')
 	var row=current.length //check if piece is in pawns or other row
-	if(row >=5){
+	if(row <=6){
 		alert("-1")
 		var row=-1
 	}
@@ -14,18 +14,28 @@ function move(square){
 		var row=-2
 		alert("-2")
 	}
-	function checkPiece(row){    //first check which piece is being moved to determine how it can be moved
+	function checkPiece(row){    //first check which piece is being moved to determine how it can be moved  //HERE doesn't work - nums above 9 just return last number (i.e 10 = 0 11 =1)
             var num=current.slice(row) 
-            if(num < 9){
-            	return false
+            alert("num =" + num)
+            if(num<9){
+            	var piece ="pawn"
+            	return piece
             }
-            else{
-            	
-              //add other pieces here
-            	return true
+            if (num ==9 || num==16){
+            	var piece ="rook"
+            	return piece
+            }
+            if(num==10 || num==15){
+            	var piece ="knight"
+            	return piece
+            }
+            if(num==11||num==16){
+            	var piece ="bishop"
+            	return piece
             }
 	}
-	var notPawn = checkPiece(row)
+	var piece = checkPiece(row)  //change this to i.e var piece which will contain a string with current piece in it
+	alert("piece is a " + piece)
 	var lastSquare=localStorage.getItem('currentSquare');
 	var turn = localStorage.getItem("turn")
 	var targetSquare=(square)   // load the last clicked piece (current), the square it was on and the target square
@@ -51,7 +61,7 @@ function move(square){
      }  
 
    
-    if (notPawn){
+    if (piece =="pawn"){
     	
     	if((targRow!=currentRow && currentCol !=targCol)){
     		
@@ -63,7 +73,7 @@ function move(square){
     	return
 
     }
-    if ((notPawn===false) && ((targCol - currentCol) > 1 || (targRow - currentRow > 1))){  //testing change this and generalise once works - this is for pawns
+    if ((piece=="pawn") && ((targCol - currentCol) > 1 || (targRow - currentRow > 1))){  //testing change this and generalise once works - this is for pawns
     	alert("Invalid move ")  //above last means cant's move'bkacwards' IS THIS
     	return
     	
@@ -74,20 +84,39 @@ function move(square){
  
 	if (turn == 'white'){
 		var firstLetter = "w"
-		if (notPawn){
+		alert("piece =" + piece)
+		if (piece==="rook"){
+			alert("rook")
 			var piece="assets/rook.png"
 		}
+		else if (piece ==="knight"){
+			var piece ="assets/knight.png"
+		}
+		else if (piece ==="bishop"){
+			var piece = "assets/bishop.png"
+        }
 		else{
 		var piece = "assets/pawn.png"
 	    }
-	}
+		}
+
+	
 	else{
 		var firstLetter="b"
-		if (notPawn){
+		alert("piece =" + piece)
+		if (piece==="rook"){
 			var piece="assets/rook2.png"
+			alert("rook loaded")
 		}
+        else if (piece =="knight"){
+        	var piece = "assets/knight2.png"
+        }
+        else if(piece =="bishop"){
+          var piece = "assets/bishop2.png"
+        }
 		else{
 		var piece = "assets/pawn2.png"
+		alert("pawn loaded")
 	}
 	}               //check whose turn it is 
 	if (turn == "white" & current[0]!=="w"){   //check currently selected piece is of the right colour
@@ -101,6 +130,7 @@ function move(square){
 	if (document.getElementById(square).firstElementChild == null){
 		
 		var targ=(document.getElementById(targetSquare))
+		alert("just beofre load piece =" + piece)
 		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
         document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
          if (turn =="white"){
