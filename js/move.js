@@ -25,12 +25,16 @@ function move(square){
             	var piece ="rook"
             	return piece
             }
-            if(num==10 || num==15){
+            if(num==10 || num==14){
             	var piece ="knight"
             	return piece
             }
-            if(num==11||num==16){
+            if(num==11||num==15){
             	var piece ="bishop"
+            	return piece
+            }
+            if (num==12){
+            	var piece ="queen"
             	return piece
             }
 	}
@@ -73,10 +77,55 @@ function move(square){
     	return
 
     }
-    if ((piece=="pawn") && ((targCol - currentCol) > 1 || (targRow - currentRow > 1))){  //testing change this and generalise once works - this is for pawns
-    	alert("Invalid move ")  //above last means cant's move'bkacwards' IS THIS
-    	return
+    function castleMove(targCol, currentCol){
+    	    alert("in castle move")
+    	    alert("targ col - current col " + (Math.abs(targCol -currentCol)))
+    	    alert("targ row - current row " + (Math.abs(targRow -currentRow)))
+		    if ((Math.abs(targCol - currentCol) > 0 )&& (Math.abs(targRow - currentRow )>0)){  //testing change this and generalise once works - this is for pawns
+		    	alert("Invalid move ")  
+		    	return false 
+    	}
+    }
+    function bishopMove (targCol,targRow){
     	
+         if (currentCol ==targCol && currentRow==targRow){
+         	alert("ended bishopMove")
+         	return 
+         }
+         if(!targRow || !targCol){
+         	alert("no targ")
+         	return
+         }
+         alert("targCol =" +targCol)
+         alert("targRow ="+targRow)
+
+         if (targCol > currentCol){
+         	targCol --
+         }
+         else{
+         	targCol++
+         }
+         if(targRow >currentRow){
+         	targRow --
+         }
+         else{
+         	targRow++
+         }
+         bishopMove(targCol,targRow)
+    }   //for queen try pawnMove bishopMove and castleMove as can do all three
+    if (piece =="bishop"){
+    	result=bishopMove(targCol,targRow)
+    	if(result==false){
+    		alert("invalid Move!")
+    		return 
+    	}
+    }
+    if (piece ==="rook" ||piece ==="queen"){
+    	result = castleMove(targCol, currentCol)
+    	if(result===false){
+    		alert("invalid move!")
+    		return 
+    	}
     }
 
 	// One Two Thre Fou Fiv Six Sev Eig  
@@ -94,6 +143,9 @@ function move(square){
 		}
 		else if (piece ==="bishop"){
 			var piece = "assets/bishop.png"
+        }
+        else if (piece =="queen"){
+        	var piece ="assets/queen.png"
         }
 		else{
 		var piece = "assets/pawn.png"
@@ -113,6 +165,9 @@ function move(square){
         }
         else if(piece =="bishop"){
           var piece = "assets/bishop2.png"
+        }
+        else if (piece =="queen"){
+        	var piece ="assets/queen2.png"
         }
 		else{
 		var piece = "assets/pawn2.png"
