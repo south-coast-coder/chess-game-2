@@ -1,3 +1,5 @@
+//To DO
+// Add list of pawns who made first move to local storage, check this before each pawn moves to see
 function move(square){
 
 	var nums = [1,2,3,4,5,6,7,8]
@@ -96,6 +98,12 @@ function move(square){
          	alert("no targ")
          	return
          }
+         alert("current Row" +currentRow +"targ row"+targRow)
+         alert("row diff"+ (Math.abs(currentRow)-Math.abs(targRow)))
+         if(Math.abs(currentRow-targRow)==1){ //this is to stop from evaluating false if only want to mvoe one square away
+         	alert("only one away")
+         	return 
+         }
          alert("targCol =" +targCol)
          alert("targRow ="+targRow)
          //check if there is a piece on each square here ie if (targCol Tar Row ) !==(empty)return "invaldi move"
@@ -156,13 +164,30 @@ function move(square){
     		return   //Once this function works add it and castle check and pawn check to Queen - try all and have the others as catch 
     	}
     }
-    if (piece ==="rook" ||piece ==="queen"){
+    if (piece ==="rook"){
     	result = castleMove(targCol, currentCol)
     	if(result===false){
     		alert("invalid move!")
     		return 
     	}
     }
+    if(piece =="queen"){
+    	try{
+    		result=castleMove(targCol, currentCol)
+    	}
+    	catch(error){
+    		alert("invalid")
+    	}
+    	try{
+    		result=bishopMove(targCol, currentCol)
+    	}
+    	catch(error)
+        {
+
+    		alert("invalid move") //add king move here (is pawn plus backwards and diagonal)
+    	}
+    	}
+    
     //if(piece =="queen"){//
     // try(i.e bishop move)
      //catch castle moe
