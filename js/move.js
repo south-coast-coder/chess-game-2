@@ -39,6 +39,10 @@ function move(square){
             	var piece ="queen"
             	return piece
             }
+            if(num==13){
+            	var piece ="king"
+            	return piece
+            }
 	}
 	var piece = checkPiece(row)  //change this to i.e var piece which will contain a string with current piece in it
 	alert("piece is a " + piece)
@@ -87,6 +91,36 @@ function move(square){
 		    	alert("Invalid move ")  
 		    	return false 
     	}
+    }
+    function knightMove(targCol, targRow){
+    	    alert("targ Row == " +targRow+"currentRow+2=" +(currentRow+2)) //test this first
+        	if((targRow==(currentRow-2))&& (targCol ==(currentCol-1))){
+    		alert("valid")
+    		return
+    	}
+    	else if((targRow==(currentRow-2))&& (targCol ==(currentCol+1))){
+    		alert("valid")
+    		return
+    }
+    else if((targRow==currentRow-1)&& (targCol ==currentCol+2)){
+    		alert("valid")
+    		return
+    	}
+    else if((targRow==currentRow+1)&& (targCol ==currentCol+2)){
+    		alert("valid")
+    		return
+    	}
+    else if ((targRow==currentRow-1)&& (targCol ==currentCol-2)){
+    		alert("valid")
+    		return
+    	}
+    else if ((targRow==currentRow+1)&& (targCol ==currentCol-2)){
+    		alert("valid")
+    		return
+    	}
+    else{
+    	return false
+    }
     }
     function bishopMove (targCol,targRow){
     	
@@ -164,6 +198,23 @@ function move(square){
     		return   //Once this function works add it and castle check and pawn check to Queen - try all and have the others as catch 
     	}
     }
+    function kingMove(targCol, targRow){
+    	if((Math.abs(targCol-currentCol))>1 || Math.abs(targRow-currentRow)>1){
+    		alert("invalid move")
+    		return false
+    	}
+    	else{
+    		return 
+    	}
+    	}
+    
+    if (piece ==="king"){
+    	result= kingMove(targCol, targRow)
+    	if (result ===false){
+    		alert("invalid move!")
+    		return
+    	}
+    }
     if (piece ==="rook"){
     	result = castleMove(targCol, currentCol)
     	if(result===false){
@@ -187,6 +238,12 @@ function move(square){
     		alert("invalid move") //add king move here (is pawn plus backwards and diagonal)
     	}
     	}
+      if(piece=="knight"){
+      	var result = knightMove (targCol,targRow)
+      	if(result==false){
+      		return
+      	}
+      }
     
     //if(piece =="queen"){//
     // try(i.e bishop move)
@@ -214,6 +271,9 @@ function move(square){
         else if (piece =="queen"){
         	var piece ="assets/queen.png"
         }
+        else if(piece =="king"){
+        	var piece ="assets/king.png"
+        }
 		else{
 		var piece = "assets/pawn.png"
 	    }
@@ -235,6 +295,9 @@ function move(square){
         }
         else if (piece =="queen"){
         	var piece ="assets/queen2.png"
+        }
+        else if(piece =="king"){
+        	var piece ="assets/king2.png"
         }
 		else{
 		var piece = "assets/pawn2.png"
