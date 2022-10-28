@@ -55,6 +55,7 @@ function move(square){
 	var currentCol = lastSquare.slice(-1)
 	var targRow = targetSquare.substr(0, targetSquare.length - 1)
 	var currentRow = lastSquare.substr(0,lastSquare.length -1)
+	alert("value initially targCol"+ targCol+"targ Row "+targRow +"currentrow " +currentRow+"current Col"+currentCol)
 	for (var i in numsLet){   //Convert column name from string to number so can compare difference
 		
 		if (targRow ==numsLet[i]){
@@ -84,41 +85,48 @@ function move(square){
 
    // }
     function castleMove(targCol, currentCol){
-    	    alert("in castle move")
-    	    alert("targ col - current col " + (Math.abs(targCol -currentCol)))
-    	    alert("targ row - current row " + (Math.abs(targRow -currentRow)))
+    	  
 		    if ((Math.abs(targCol - currentCol) > 0 )&& (Math.abs(targRow - currentRow )>0)){  //testing change this and generalise once works - this is for pawns
 		    	alert("Invalid move ")  
 		    	return false 
     	}
     }
     function knightMove(targCol, targRow){
-    	    alert("targ Row == " +targRow+"currentRow+2=" +(currentRow+2)) //test this first
+    	    currentCol=parseInt(currentCol)
+    	    alert("testing Five")
+    	    alert(targRow==currentRow-1)
+    	    alert(targCol==currentCol+2)
+    	    alert(targCol)
+    	    alert(currentCol)
+    	    alert(currentCol+2)
+    	    alert(5==3+2)
+    	    alert("targ Row == " +targRow+"currentRow=" +currentRow+"targ Col="+targCol +"current Col="+currentCol) //test this first
         	if((targRow==(currentRow-2))&& (targCol ==(currentCol-1))){
-    		alert("valid")
+    		alert("valid One") //works
     		return
     	}
-    	else if((targRow==(currentRow-2))&& (targCol ==(currentCol+1))){
-    		alert("valid")
+    	else if ((targRow==(currentRow+2))&& (targCol ==(currentCol+1))){
+    		alert("valid Two")
     		return
     }
-    else if((targRow==currentRow-1)&& (targCol ==currentCol+2)){
-    		alert("valid")
+    else if ((targRow==(currentRow-1)) && (targCol ==(currentCol+2))){ // < TEST THIS FIRST
+    		alert("valid Three")
     		return
     	}
-    else if((targRow==currentRow+1)&& (targCol ==currentCol+2)){
-    		alert("valid")
+    else if ((targRow==(currentRow+1))&& (targCol ==(currentCol+2))){
+    		alert("valid Four")
     		return
     	}
-    else if ((targRow==currentRow-1)&& (targCol ==currentCol-2)){
-    		alert("valid")
+    else if ((targRow==(currentRow-1))&& (targCol ==(currentCol+2))){
+    		alert("valid Five")
     		return
     	}
-    else if ((targRow==currentRow+1)&& (targCol ==currentCol-2)){
-    		alert("valid")
+    else if ((targRow==(currentRow+1))&& (targCol ==(currentCol-2))){
+    		alert("valid Six") //works
     		return
     	}
     else{
+    	alert("none of the abov")
     	return false
     }
     }
@@ -348,9 +356,11 @@ function move(square){
     alert("to replace" + lastSquare)
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
     if (turn =="white"){
+    	alert("changing turn to white")
     	localStorage.setItem("turn","black")
     }
     if (turn =="black"){
+    	alert("changing turn to black")
     	localStorage.setItem("turn","white")
     }
    
