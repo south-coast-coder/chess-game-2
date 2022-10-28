@@ -73,12 +73,26 @@ function move(square){
 
    
     if (piece =="pawn"){
+    	var num=current.slice(row) 
+    	var fullPiece = turn+num
+        const pawns = JSON.parse(localStorage.getItem('pawns'));
+    	for(var i =0;i <pawns.length;i++){
+    		
+    		if(pawns[i]==fullPiece){
+    			alert("found piece!")   //if is here give it two moves then remove from list
+    		
+    		if(targRow<(currentRow+2)&& currentCol !=targCol){
+    			return 
+    		}
+    	}
+    
     	
-    	if((targRow!=currentRow && currentCol !=targCol)){
+       if((targRow!=currentRow && currentCol !=targCol)){
     		
     		return
-    	}
+    	}   //ADD DIAGONAL CONDITION HERE ..ie tarCol (+ or -1 AND square not null (should throw anyway if OWN))
     }
+}
    // if ((targCol-currentCol) > 1){
    // 	alert("Greater")
    // 	return
