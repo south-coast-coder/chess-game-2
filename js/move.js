@@ -9,16 +9,16 @@ function move(square){
 	var current=localStorage.getItem('currentPiece')
 	var row=current.length //check if piece is in pawns or other row
 	if(row <=6){
-		alert("-1")
+		//alert("-1")
 		var row=-1
 	}
 	else{
 		var row=-2
-		alert("-2")
+		//alert("-2")
 	}
 	function checkPiece(row){    //first check which piece is being moved to determine how it can be moved  //HERE doesn't work - nums above 9 just return last number (i.e 10 = 0 11 =1)
             var num=current.slice(row) 
-            alert("num =" + num)
+            //alert("num =" + num)
             if(num<9){
             	var piece ="pawn"
             	return piece
@@ -45,7 +45,7 @@ function move(square){
             }
 	}
 	var piece = checkPiece(row)  //change this to i.e var piece which will contain a string with current piece in it
-	alert("piece is a " + piece)
+	//alert("piece is a " + piece)
 	var lastSquare=localStorage.getItem('currentSquare');
 	var turn = localStorage.getItem("turn")
 	var targetSquare=(square)   // load the last clicked piece (current), the square it was on and the target square
@@ -55,7 +55,7 @@ function move(square){
 	var currentCol = lastSquare.slice(-1)
 	var targRow = targetSquare.substr(0, targetSquare.length - 1)
 	var currentRow = lastSquare.substr(0,lastSquare.length -1)
-	alert("value initially targCol"+ targCol+"targ Row "+targRow +"currentrow " +currentRow+"current Col"+currentCol)
+	//alert("value initially targCol"+ targCol+"targ Row "+targRow +"currentrow " +currentRow+"current Col"+currentCol)
 	for (var i in numsLet){   //Convert column name from string to number so can compare difference
 		
 		if (targRow ==numsLet[i]){
@@ -73,26 +73,49 @@ function move(square){
 
    
     if (piece =="pawn"){
+    	alert("in pawn")
     	var num=current.slice(row) 
     	var fullPiece = turn+num
         const pawns = JSON.parse(localStorage.getItem('pawns'));
     	for(var i =0;i <pawns.length;i++){
     		
     		if(pawns[i]==fullPiece){
-    			alert("found piece!")   //if is here give it two moves then remove from list
+    			//alert("found piece!")   //if is here give it two moves then remove from list
     		
-    		if(targRow<(currentRow+2)&& currentCol !=targCol){
+    		if(targRow>(currentRow+2)&& currentCol !=targCol){  // on first move can move two squares
     			return 
     		}
     	}
     
-    	
-       if((targRow!=currentRow && currentCol !=targCol)){
+    	}
+       //if((targRow!=currentRow && currentCol !=targCol)){
     		
-    		return
-    	}   //ADD DIAGONAL CONDITION HERE ..ie tarCol (+ or -1 AND square not null (should throw anyway if OWN))
+    	//	return
+    	//}  
+    	if (turn =="white"){
+    		for(var i in nums){
+            if (targRow ==nums[i]){
+			var useRow=numsLet[i]
+			//alert("Test for doc get elem in bish func" + useRow + targCol)
+
+			
+		   }
+		}
+    		var col =parseInt(currentCol)
+    		alert(col+1)
+    		alert(targCol)
+    		if(targCol == (col+1) || targCol ==(col-1)){
+    			alert("diagonal")
+    			var diagSquare=document.getElementById(useRow+targCol).firstElementChild
+    			if(diagSquare==null){
+    				alert("invalid empty square")
+    				return
+    			}
+    		}
+    	} //ADD DIAGONAL CONDITION HERE ..ie tarCol (+ or -1 AND square not null (should throw anyway if OWN))
     }
-}
+
+
    // if ((targCol-currentCol) > 1){
    // 	alert("Greater")
    // 	return
@@ -101,20 +124,20 @@ function move(square){
     function castleMove(targCol, currentCol){
     	  
 		    if ((Math.abs(targCol - currentCol) > 0 )&& (Math.abs(targRow - currentRow )>0)){  //testing change this and generalise once works - this is for pawns
-		    	alert("Invalid move ")  
+		    	//alert("Invalid move ")  
 		    	return false 
     	}
     }
     function knightMove(targCol, targRow){
     	    currentCol=parseInt(currentCol)
-    	    alert("testing Five")
-    	    alert(targRow==currentRow-1)
-    	    alert(targCol==currentCol+2)
-    	    alert(targCol)
-    	    alert(currentCol)
-    	    alert(currentCol+2)
-    	    alert(5==3+2)
-    	    alert("targ Row == " +targRow+"currentRow=" +currentRow+"targ Col="+targCol +"current Col="+currentCol) //test this first
+    	    //alert("testing Five")
+    	    //alert(targRow==currentRow-1)
+    	    //alert(targCol==currentCol+2)
+    	    //alert(targCol)
+    	    //alert(currentCol)
+    	    //alert(currentCol+2)
+    	    //alert(5==3+2)
+    	    //alert("targ Row == " +targRow+"currentRow=" +currentRow+"targ Col="+targCol +"current Col="+currentCol) //test this first
         	if((targRow==(currentRow-2))&& (targCol ==(currentCol-1))){
     		alert("valid One") //works
     		return
@@ -140,28 +163,28 @@ function move(square){
     		return
     	}
     else{
-    	alert("none of the abov")
+    	//alert("none of the abov")
     	return false
     }
     }
     function bishopMove (targCol,targRow){
     	
          if (currentCol ==targCol && currentRow==targRow){
-         	alert("ended bishopMove")
+         	//alert("ended bishopMove")
          	return 
          }
          if(!targRow || !targCol){
-         	alert("no targ")
+         	//alert("no targ")
          	return
          }
-         alert("current Row" +currentRow +"targ row"+targRow)
-         alert("row diff"+ (Math.abs(currentRow)-Math.abs(targRow)))
+         //alert("current Row" +currentRow +"targ row"+targRow)
+         //alert("row diff"+ (Math.abs(currentRow)-Math.abs(targRow)))
          if(Math.abs(currentRow-targRow)==1){ //this is to stop from evaluating false if only want to mvoe one square away
-         	alert("only one away")
+         	//alert("only one away")
          	return 
          }
-         alert("targCol =" +targCol)
-         alert("targRow ="+targRow)
+         //alert("targCol =" +targCol)
+         //alert("targRow ="+targRow)
          //check if there is a piece on each square here ie if (targCol Tar Row ) !==(empty)return "invaldi move"
 
          if (targCol > currentCol){
@@ -178,17 +201,17 @@ function move(square){
          }
 
          //document.getElementById() - use this to check if squares in between are occupied or not - IMPORTANT
-         alert("targ Col now " + targCol +" Targ Row now " +targRow)
+         //alert("targ Col now " + targCol +" Targ Row now " +targRow)
          for(var i in nums){
          if (targRow ==nums[i]){
 			var useRow=numsLet[i]
-			alert("Test for doc get elem in bish func" + useRow + targCol)
+			//alert("Test for doc get elem in bish func" + useRow + targCol)
 
 			
 		}
 	    }
 	    if(document.getElementById(useRow+targCol).firstElementChild){
-				alert("suqare occupied")
+				//alert("suqare occupied")
 				return false  
 
 			}
@@ -198,17 +221,17 @@ function move(square){
     if (piece =="bishop"){
     	//first check if is a valid move (should be a maths way to do this)
     	if (targCol==currentCol){
-    		alert("invalid move")
+    		//alert("invalid move")
     		return
     	}
     	if (targRow==currentRow){
-    		alert("invaldi move")
+    		//alert("invaldi move")
     		return 
     	}
-    	alert("math.abs current row - targ "+(Math.abs(currentRow-targRow)))
-    	alert("same for col"+ Math.abs(currentCol-targCol))
+    	//alert("math.abs current row - targ "+(Math.abs(currentRow-targRow)))
+    	//alert("same for col"+ Math.abs(currentCol-targCol))
     	if (Math.abs(currentRow-targRow) != (Math.abs(currentCol-targCol))){
-    		alert("Invalid move")
+    		//alert("Invalid move")
     			return 
     		}
     	
@@ -216,13 +239,13 @@ function move(square){
     	//Then check if piece on target is own then run the following code to check if there are pieces in the squares between 
     	result=bishopMove(targCol,targRow)
     	if(result==false){
-    		alert("invalid Move!")
+    		//alert("invalid Move!")
     		return   //Once this function works add it and castle check and pawn check to Queen - try all and have the others as catch 
     	}
     }
     function kingMove(targCol, targRow){
     	if((Math.abs(targCol-currentCol))>1 || Math.abs(targRow-currentRow)>1){
-    		alert("invalid move")
+    		//alert("invalid move")
     		return false
     	}
     	else{
@@ -233,14 +256,14 @@ function move(square){
     if (piece ==="king"){
     	result= kingMove(targCol, targRow)
     	if (result ===false){
-    		alert("invalid move!")
+    		//alert("invalid move!")
     		return
     	}
     }
     if (piece ==="rook"){
     	result = castleMove(targCol, currentCol)
     	if(result===false){
-    		alert("invalid move!")
+    		//alert("invalid move!")
     		return 
     	}
     }
@@ -249,7 +272,7 @@ function move(square){
     		result=castleMove(targCol, currentCol)
     	}
     	catch(error){
-    		alert("invalid")
+    		//alert("invalid")
     	}
     	try{
     		result=bishopMove(targCol, currentCol)
@@ -257,7 +280,7 @@ function move(square){
     	catch(error)
         {
 
-    		alert("invalid move") //add king move here (is pawn plus backwards and diagonal)
+    		//alert("invalid move") //add king move here (is pawn plus backwards and diagonal)
     	}
     	}
       if(piece=="knight"){
@@ -279,9 +302,9 @@ function move(square){
  
 	if (turn == 'white'){
 		var firstLetter = "w"
-		alert("piece =" + piece)
+		//alert("piece =" + piece)
 		if (piece==="rook"){
-			alert("rook")
+			//alert("rook")
 			var piece="assets/rook.png"
 		}
 		else if (piece ==="knight"){
@@ -304,10 +327,10 @@ function move(square){
 	
 	else{
 		var firstLetter="b"
-		alert("piece =" + piece)
+		//alert("piece =" + piece)
 		if (piece==="rook"){
 			var piece="assets/rook2.png"
-			alert("rook loaded")
+			//alert("rook loaded")
 		}
         else if (piece =="knight"){
         	var piece = "assets/knight2.png"
@@ -323,42 +346,44 @@ function move(square){
         }
 		else{
 		var piece = "assets/pawn2.png"
-		alert("pawn loaded")
+		//alert("pawn loaded")
 	}
 	}               //check whose turn it is 
 	if (turn == "white" & current[0]!=="w"){   //check currently selected piece is of the right colour
-		alert("select a piece first!")
+		//alert("select a piece first!")
 		return
 	}
 	if (turn == "black" & current[0]!=="b"){
-		alert("select a piece first!")
+		//alert("select a piece first!")
 		return
 	}
 	if (document.getElementById(square).firstElementChild == null){
 		
 		var targ=(document.getElementById(targetSquare))
-		alert("just beofre load piece =" + piece)
+		//alert("just beofre load piece =" + piece)
 		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
         document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
          if (turn =="white"){
+         	alert("changing turn to black")
     	localStorage.setItem("turn","black")
     	return
     }
     if (turn =="black"){
+    	alert("changing turn to white")
     	localStorage.setItem("turn","white")
     }
         return   //if square is empty add a piece to it then switch turns
 
 	}
 	if (document.getElementById(square).firstElementChild.id[0] ==firstLetter){   //if click on square with your own piece it will do nothing
-		alert("Own")
+		//alert("Own")
 		return
 
 	}
 	else{
-	alert("MOVE")
+	//alert("MOVE")
 	var name=document.getElementById(square).firstElementChild
-	alert("Black or White: " + name.id[0] )
+	//alert("Black or White: " + name.id[0] )
 	if (name.id[0]==firstLetter) //check if trying to take own piece!
 	{
 		alert("Own Piece!")
@@ -367,14 +392,14 @@ function move(square){
 	
 	
 	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
-    alert("to replace" + lastSquare)
+    //alert("to replace" + lastSquare)
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
     if (turn =="white"){
     	alert("changing turn to white")
     	localStorage.setItem("turn","black")
     }
     if (turn =="black"){
-    	alert("changing turn to black")
+    	//alert("changing turn to black")
     	localStorage.setItem("turn","white")
     }
    
