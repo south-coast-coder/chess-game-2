@@ -1,10 +1,10 @@
 function turn(){
 	var pawns=[]
-	for(var i =1; i <17;i++){
+	for(var i =1; i <9;i++){
 		var piece ="white"+i
 		pawns.push(piece)
 	}
-	for(var i =1; i <17;i++){
+	for(var i =1; i <9;i++){
 		var piece ="black"+i
 		pawns.push(piece)
 	}
