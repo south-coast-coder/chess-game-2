@@ -1,9 +1,10 @@
 //To DO
 // Add list of pawns who made first move to local storage, check this before each pawn moves to see
-function move(square){
+function move(square,check){
     
     pieces1=[]
     pieces2=[]
+    pieces3=["black8","black9"]
 	for(var i =1; i <17;i++){
 		var individual ="white"+i
 		pieces1.push(individual)
@@ -13,46 +14,47 @@ function move(square){
 		pieces2.push(individual)
 	}
 	
-	var squares=["Three4","Two5","One3","One4","One5","One5"] //FINISH
+	var squares=["Three4","Three3","One3","One4","One5","Two5"] //FINISH
 	var square1=squares[0]
-	alert(document.getElementById(square1))
-	alert("square1+"+square1)
-	alert(pieces2[0])
-
-	for(var i=0;i<pieces2.length;i++){ //not working yet THIS IS to build CHECK
-    		    var piece =pieces2[i]
+	alert("checl="+check)
+    if(check==false){ //use the false condition to stop it running endlessly 
+	for(var i=0;i<pieces3.length;i++){ //not working yet THIS IS to build CHECK
+    		    var piece =pieces3[i]
     		    
 
     		
     			for (var i=0; i<squares.length;i++){
-    				alert("square="+squares[i])
+    				//alert("square="+squares[i])
     				var trySquare=document.getElementById(squares[i])
 
-    				alert("trySquare="+trySquare)
+    				//alert("trySquare="+trySquare)
     				//alert(trySquare.firstElementChild.id)
     				alert("piece="+piece)
     				if(trySquare!=null && trySquare.firstElementChild.id==piece){
-    					alert("piece found")
-    					alert(trySquare)
-    					alert(piece)
+    				//	alert("piece found")
+    				//	alert(trySquare)
+    				//	alert(piece)
     					clicked(piece,trySquare) //loads piece to attack king
     					var newPiece=localStorage.getItem('currentPiece');
     					var newSquare=localStorage.getItem('currentSquare');
-    					alert("newpiece="+newPiece)
-    					alert("newsuqare="+newSquare)
+    				//	alert("newpiece="+newPiece)
+    				//	alert("newsuqare="+newSquare)
     					for (var i=0; i<squares.length;i++){
-    				       alert("square now="+squares[i])
+    				  //     alert("square now="+squares[i])
     				       var trySquare2=document.getElementById(squares[i])
-    				       if (trySquare2.firstElementChild.id=="white13"){
+    				       if(trySquare2.firstElementChild!=null){
+    				       if (trySquare2.firstElementChild.id=="white13"){ //white king
     				       	alert("king is " + squares[i])
-    				       	move(squares[i])//try and take the king GETS STUCK HERE 
+    				       	move(squares[i],true)//try and take the king GETS STUCK HERE 
+    				       	//alert(result)//return
     				       }
 
 
-                        
+                        }
     				}
 
     }
+}
 }
 }
 	var nums = [1,2,3,4,5,6,7,8]
@@ -138,6 +140,7 @@ function move(square){
     			//alert("found piece!")   //if is here give it two moves then remove from list
     		
     		if(targRow>(currentRow+2)&& currentCol !=targCol){  // on first move can move two squares
+    			alert("here!")
     			return 
     		}
     	}
@@ -236,7 +239,7 @@ function move(square){
     	
          if (currentCol ==targCol && currentRow==targRow){
             alert(1)
-         	return  false
+         	return true
          }
          if(!targRow || !targCol){
          	alert(2)
@@ -419,11 +422,19 @@ function move(square){
 	}
 	}               //check whose turn it is 
 	if (turn == "white" & current[0]!=="w"){   //check currently selected piece is of the right colour
-		//alert("select a piece first!")
+		if (check==true){
+			alert("check")
+		}
+		alert("check="+check)
+		alert("select a piece first!")
 		return false
 	}
 	if (turn == "black" & current[0]!=="b"){
-		//alert("select a piece first!")
+		alert("checl="+check)
+		if (check==true){
+			alert("check")
+		}
+		alert("select a piece first!")
 		return false
 	}
 	if (document.getElementById(square).firstElementChild == null){
@@ -529,6 +540,7 @@ function move(square){
    
    }
 }
+
 
 
 
