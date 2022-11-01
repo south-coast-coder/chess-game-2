@@ -123,12 +123,125 @@ function move(square){
    // }
     function castleMove(targCol, currentCol){
     	  
+    	  alert("targCol"+targCol+"currentCOl"+currentCol+"targRow"+targRow+"currentRow"+currentRow)
 		    if ((Math.abs(targCol - currentCol) > 0 )&& (Math.abs(targRow - currentRow )>0)){  //testing change this and generalise once works - this is for pawns
 		    	//alert("Invalid move ")  
 		    	return false 
     	}
+    	    if(Math.abs(targCol - currentCol) > 0 ){
+    	    	alert("diff Col")
+    	    	alert(Math.abs(targCol-currentCol)+"+<- difference between the Cols")
+    	    	 for(var i in nums){
+                  if (targRow ==nums[i]){
+			           var useRow=numsLet[i]
+			//alert("Test for doc get elem in bish func" + useRow + targCol)
+
+			   }
+			  }
+	    if(targCol>currentCol){
+	    	alert("target Column greater")
+
+
+		for(var i=(currentCol+1);i<targCol;i++){
+			
+			if(document.getElementById(useRow+i)){
+			if(document.getElementById(useRow+i).firstElementChild!=null){
+				alert("square occupied")
+				return false
+                  
+			}
+		}
+	}
+	}
+	else{
+		alert("target Column less")
+		for(var i=(currentCol-1);i>targCol;i--){
+			
+			if(document.getElementById(useRow+i)){
+			if(document.getElementById(useRow+i).firstElementChild!=null){
+				alert("square occupied")
+				return false
+                  
+			}
+		}
     }
+
+	}
+	}
+		 alert("JERE IN CASTLE")
+	       alert(Math.abs(targRow-currentRow))
+    	    if(Math.abs(targRow - currentRow) > 0 ){
+    	    	alert("diff Row")
+    	    	alert(Math.abs(targRow-currentRow)+"+<- difference between the Rwos")
+    	    	
+    	    	 for(var i in nums){
+                  if (targRow ==nums[i]){
+                  	  alert("found")
+			           var useRow=numsLet[i] //change this into numerical value to use 
+			//alert("Test for doc get elem in bish func" + useRow + targCol)
+
+			   }
+			  }
+
+		if(targRow>currentRow){
+			alert("targ Row greater")
+	    for(var i=(currentRow+1);i<targRow;i++){ //i<4 (example) 
+			
+
+			for (var j =1;j<nums.length;j++){
+				if(nums[j]==i){
+					
+					var useRow2=numsLet[j]
+
+				}
+			}
+			
+
+            if(document.getElementById(useRow2+targCol)){
+			if(document.getElementById(useRow2+targCol).firstElementChild!=null){
+				alert(document.getElementById(useRow2+targCol).firstElementChild.id)
+				alert("square occupied")
+				return false
+                  
+			}
+		}
+		}
+	}
+	if(targRow<currentRow){
+		alert("targ Row less")
+		 for(var i=(currentRow-1);i>targRow;i--){ //i<4 (example) 
+			
+			for (var j =1;j<nums.length;j++){
+				if(nums[j]==i){
+					
+					var useRow2=numsLet[j]
+
+				}
+			}
+			
+
+            if(document.getElementById(useRow2+targCol)){
+			if(document.getElementById(useRow2+targCol).firstElementChild!=null){
+				alert(document.getElementById(useRow2+targCol).firstElementChild.id)
+				alert("square occupied")
+				return false
+                  
+			}
+		}
+		}
+
+	}
+	    
+
+    	    
+    	}
+    }
+
+
+
+
     function knightMove(targCol, targRow){
+    	    alert("in knightMove")
     	    currentCol=parseInt(currentCol)
     	    //alert("testing Five")
     	    //alert(targRow==currentRow-1)
@@ -139,6 +252,10 @@ function move(square){
     	    //alert(5==3+2)
     	    //alert("targ Row == " +targRow+"currentRow=" +currentRow+"targ Col="+targCol +"current Col="+currentCol) //test this first
         	if((targRow==(currentRow-2))&& (targCol ==(currentCol-1))){
+    		alert("valid One") //works
+    		return
+    	}
+    	else if((targRow==(currentRow+2))&& (targCol ==(currentCol-1))){
     		alert("valid One") //works
     		return
     	}
@@ -262,8 +379,9 @@ function move(square){
     }
     if (piece ==="rook"){
     	result = castleMove(targCol, currentCol)
+    	alert("result="+result)
     	if(result===false){
-    		//alert("invalid move!")
+    		alert("invalid move!")
     		return 
     	}
     }
@@ -406,4 +524,5 @@ function move(square){
    
 }
 }
+
 
