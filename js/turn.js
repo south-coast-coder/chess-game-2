@@ -8,7 +8,7 @@ function turn(){
 		var piece ="black"+i
 		pawns.push(piece)
 	}
-	//alert(pawns)
+	alert(pawns)
 	//alert(pawns[0])
 	//alert(pawns[1])
 	localStorage.setItem("turn","white")
