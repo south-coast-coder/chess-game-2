@@ -395,10 +395,16 @@ function move(square){
          	//alert("no targ")
          	return false
          }
+         alert("currentRow"+currentRow+"targRow"+targRow)
+         alert(currentRow==targRow)
+         if(currentRow==targRow){
+         	alert("invalid")
+         	return false
+         }
          //alert("current Row" +currentRow +"targ row"+targRow)
          //alert("row diff"+ (Math.abs(currentRow)-Math.abs(targRow)))
          if(Math.abs(currentRow-targRow)==1){ //this is to stop from evaluating false if only want to mvoe one square away
-         	//alert("only one away")
+         	alert("only one away")
          	return true
          }
          //alert("targCol =" +targCol)
@@ -428,36 +434,42 @@ function move(square){
 			
 		}
 	    }
-	    if(document.getElementById(useRow+targCol).firstElementChild){
-				//alert("suqare occupied")
-				return false  
+	    var betweenSquare=document.getElementById(useRow+targCol)
+	    alert("betweensquare="+betweenSquare)
+	    if(betweenSquare.firstElementChild){
+	    	    alert(betweenSquare.firstElementChild)
+			    alert("suqare occupied")
+			    var result=false
+				return result
 
 			}
 
-         bishopMove(targCol,targRow)
+         return bishopMove(targCol,targRow)
     }   //for queen try pawnMove bishopMove and castleMove as can do all three
     if (piece =="bishop"){
+
     	//first check if is a valid move (should be a maths way to do this)
     	if (targCol==currentCol){
-    		//alert("invalid move")
+    		alert("invalid move 1")
     		return
     	}
     	if (targRow==currentRow){
-    		//alert("invaldi move")
+    		alert("invaldi move 2")
     		return 
     	}
     	//alert("math.abs current row - targ "+(Math.abs(currentRow-targRow)))
     	//alert("same for col"+ Math.abs(currentCol-targCol))
     	if (Math.abs(currentRow-targRow) != (Math.abs(currentCol-targCol))){
-    		//alert("Invalid move")
+    		alert("Invalid move 3")
     			return 
     		}
     	
 
     	//Then check if piece on target is own then run the following code to check if there are pieces in the squares between 
     	result=bishopMove(targCol,targRow)
+    	alert("result="+result)
     	if(result==false){
-    		//alert("invalid Move!")
+    		alert("invalid Move result==false!")
     		return   //Once this function works add it and castle check and pawn check to Queen - try all and have the others as catch 
     	}
     }
@@ -487,24 +499,18 @@ function move(square){
     	}
     }
     if(piece =="queen"){
-    	try{
+    	
     		result=castleMove(targCol, currentCol)
-    		alert("result="+result)
+    		if(result==false){
+    			alert("castle not worked in queen trying bishop")
+    			result=bishopMove(targCol,targRow)
+    			if(result==false){
+    				alert("bishop failed too exiting...")
+    				return 
+    			}
+    		}
     	}
-    	catch(error){
-    		alert("invalid castle queen")
-    	}
-    	try{
-    		result=bishopMove(targCol, currentCol)
-    		alert("bish resukt="+result)
-    	}
-    	catch(error)
-        {
-
-    		alert("invalid bishop queen") //add king move here (is pawn plus backwards and diagonal)
-    	}
-    	alert("result="+result)
-    	}
+    	
       if(piece=="knight"){
       	var result = knightMove (targCol,targRow)
       	if(result==false){
