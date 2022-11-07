@@ -762,7 +762,7 @@ function move(square){
 	var check
 
 	var whiteCheck=Boolean(localStorage.getItem("whiteCheck"))
-	if (turn=="white"){
+	if (turn=="white" && whiteCheck===true){
 		alert("chec3")
              if(document.getElementById(targetSquare).firstElementChild){
                   var removePiece=document.getElementById(targetSquare).firstElementChild
@@ -807,14 +807,12 @@ function move(square){
         	    	alert("tryPiece="+tryPiece+" piece taken")
         	    	clicked(tryPiece,Squares[i])
 	        	    var result=move(kingSquare)
-	        	    localStorage.setItem("whiteCheck",true)
 	        	    alert("HERE UNDERNEATH RESULT=move")
 	        	    alert("result of checktry="+result)
 	        	    check=true
         	}
         	}
         }
-
         alert(check)
         if(check==true){
         	alert("in check")
@@ -828,7 +826,7 @@ function move(square){
      }
         }
       var blackCheck=Boolean(localStorage.getItem("blackCheck"))
-      if(turn=="black"){
+      if(turn=="black" && blackCheck===true){
       	alert("chec4")
              if(document.getElementById(targetSquare).firstElementChild){
              	alert("checking squares")
@@ -844,28 +842,27 @@ function move(square){
 
         
         }
-	
+	//}
 	//If have clicked on a piecce (not empty square first remove this from checklist)
 	// CHECK HERE   move(checkPiece, )  - now loop through all remining pieces and try to take king
 	// Here just before ..the code below that changes images ..check if target piece is king (as all avove code must have worked...if check==false (put thsi in local stoarge) set it to true and don;t allow moves until change ..)
-	// if(turn=="white"){
-	/// 	    localStorage.setItem("whiteCheck",false)
-	 //	    whiteCheck==false
+	 if(turn=="white"&&whiteCheck==true){
+	 	    localStorage.setItem("whiteCheck",false)
+	 	    whiteCheck==false
 	
-	 //	    alert("850")
+	 	    alert("850")
         	// return true   //STOPS IMAGE FROM LOADING
-        
-  //      if(turn=="black"&&blackCheck==true){
-   //     	blackCheck==false
-   //     	alert("854")
-   //     	localStorage.setItem("blackCheck",false)
+        }
+        if(turn=="black"&&blackCheck==true){
+        	blackCheck==false
+        	alert("854")
+        	localStorage.setItem("blackCheck",false)
         	//return true
-       
+        }
 	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
     //alert("to replace" + lastSquare)
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
      alert("just before LOAD")
-     alert("piece="+piece+"line 868")
 		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
         document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
         var num=current.slice(row) 
@@ -890,7 +887,7 @@ function move(square){
     		}
     	}
     if (turn =="white"){
-    	
+    	localStorage.setItem("blackcheck",)
     	alert("changing turn to black")
     	localStorage.setItem("turn","black")
     	return true //poss change this
@@ -900,11 +897,11 @@ function move(square){
     	localStorage.setItem("turn","white")
     	return true  //poss change this 
     }
-}
-}
    
    
 
+}
 
+}
 
 

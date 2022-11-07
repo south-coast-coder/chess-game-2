@@ -1,6 +1,6 @@
 function turn(){
 	localStorage.setItem("whiteCheck",true)
-	localStorage.setItem("blackCheck",true)
+	localStorage.setItem("blackCheck",false)
 	var pawns=[]
 	for(var i =1; i <17;i++){
 		var piece ="white"+i
