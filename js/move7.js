@@ -600,264 +600,54 @@ function move(square){
 		//alert("pawn loaded")
 	}
 	}               //check whose turn it is 
-	if (turn == "white" && current[0]!=="w"&& whiteCheck==false){   //check currently selected piece is of the right colour
+	if (turn == "white" && current[0]!=="w"){   //check currently selected piece is of the right colour
 		alert("select a piece first!")
 		return false
 	}
-	if (turn == "black" && current[0]!=="b" &&blackCheck==false){
+	if (turn == "black" && current[0]!=="b"){
 		alert("select a piece first!")
 		return false
 	}
-	if (document.getElementById(square).firstElementChild == null){
-		
-		var targ=(document.getElementById(targetSquare))
-		//alert("just beofre load piece =" + piece)
-	var whiteCheck=Boolean(localStorage.getItem("whiteCheck"))
-	alert(whiteCheck+"<-whitecheck"+turn+"turn")
-	 alert("whiteCheck truthy test:")
-     alert(whiteCheck==true)
-	if ((turn=="white") && (whiteCheck===true) ){
-		alert("check1")
-		    for(var i=0;i<Squares.length;i++){
-		    	alert("checking.....")
-         	var testKing=document.getElementById(Squares[i])
-         	alert("testKing="+testKing)
-        	if(testKing.firstElementChild!=null){
-        		var test=testKing.firstElementChild.id
-        	    if(test=="white13"){
-        	    var kingSquare=Squares[i]
-                alert("kingSquare+"+kingSquare)
-        	}
-        }
+	
+	
+	
+	alert("614 piece="+piece)
+	alert("target suqare="+targetSquare)
+	alert("current")
+	alert("square"+square)
 
-         }
-     }
-             if(document.getElementById(targetSquare).firstElementChild){
-             	alert("is a square")
-                  var removePiece=document.getElementById(targetSquare).firstElementChild
-                  for(var i=0;i<pieces.length;i++){
-                  	if(pieces[i]==removePiece){
-                  		pieces=pieces.splice[i,1]
-                  		var putBack=i
-                  		alert(pieces+"<-pieces in")
-                  	}
-                  }
-             }
-        alert(pieces+"pieces out")
-         for(var i=0;i<Squares.length;i++){
-         	alert("checing squares")
-        	if(document.getElementById(Squares[i]).firstElementChild){  //trying to take king with each piece UNLESS HAS JUST BEEN TAKEN i.e so isn't in pieces
-                
-        		var tryPiece=document.getElementById(Squares[i]).firstElementChild.id
-        	    alert(tryPiece+"trypiece  652")
-        	    alert("squares="+Squares[i])
-        	    clicked(tryPiece,Squares[i])
-        	    alert(pieces+"pieces 655")
-        	    for(var i=0;i<pieces.length;i++){
-        	    if(tryPiece==pieces[i]){
-        	    	alert("tryPiece="+tryPiece+" piece taken")
-	        	    var result=move(kingSquare)
-	        	    alert("HERE UNDERNEATH RESULT=move")
-	        	    alert("result of checktry="+result)
-        	}
-        	}
-        }
-
-         }
-         
-      var blackCheck=Boolean(localStorage.getItem("blackCheck"))
-      alert(blackCheck+"<-blackCheck variable")
-      alert(blackCheck+"<-blackCheck"+turn+"turn")
-      alert("blackcheck truthy test:")
-      alert(blackCheck==true)
-      alert((turn=="black")&& (blackCheck===true))
-      if(turn=="black" && blackCheck===true){
-      	     alert("checl2")
-             if(document.getElementById(targetSquare).firstElementChild){
-             	alert("is a square")
-                  var removePiece=document.getElementById(targetSquare).firstElementChild
-                  for(var i=0;i<pieces.length;i++){
-                  	if(pieces[i]==removePiece){
-                  		pieces.splice[i]
-                  		var putBack=i
-                  	}
-                  }
-             }
-        alert(pieces)
-         }
-        if(turn=="white"&&whiteCheck==true){
-        	alert("before image")
-        	alert("piece="+piece)
-        	alert("in check")
-        	 return true   //STOPS IMAGE FROM LOADING
-        }
-        if(turn=="black"&&blackCheck==true){
-        	alert("beore image")
-        	alert("piece="+piece)
-        	alert("in check")
-        	return true
-        }
-        alert("here before load")
-		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
-        document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
-         alert("just before LOAD")
-		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
-        document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
-        var num=current.slice(row) 
-    	var fullPiece = turn+num
-        var pawns = JSON.parse(localStorage.getItem('pawns'));
-        alert(pawns)
-
-    	for(var i =0;i <pawns.length;i++){
-    		
-    		
-    		if(pawns[i]==fullPiece){
-    			//alert("found piece!")   //if is here give it two moves then remove from list
-    			 alert("piece in pawns list")
-
-    		     var newPawns =[]
-    		     newPawns=pawns.splice(i,1)
-    		     alert("newPawns="+newPawns)
-    		     alert("pawns now" + pawns)
-    		     localStorage.setItem('pawns', JSON.stringify(pawns));
-    		     var pawnsNow=JSON.parse(localStorage.getItem('pawns'))
-    		     alert("pawns list now=" +pawnsNow)
-    		}
-    	}
-
-     
-        return   //if square is empty add a piece to it then switch turns
-
-	}
+	
+      
+      
+	if(document.getElementById(square).firstElementChild){
 	if (document.getElementById(square).firstElementChild.id[0] ==firstLetter){   //if click on square with your own piece it will do nothing
-		//alert("Own")
+		alert("Own")
 		return
 
 	}
-	else{
-	//alert("MOVE")
-	var name=document.getElementById(square).firstElementChild
-	//alert("Black or White: " + name.id[0] )
-	if (name.id[0]==firstLetter) //check if trying to take own piece!
-	{
-		alert("Own Piece!")
-		return 
-	}
-	if(document.getElementById(targetSquare).firstElementChild){ //first chek if moving to occupied square if so remove piece THEN run check, if still true put piece back adn alert (invalid in check)
-		alert("Piece to be taken is"+document.getElementById(targetSquare).firstElementChild.id)
-		for(i=0;i<pieces.length;i++){
-			if(pieces[i]==document.getElementById(targetSquare).firstElementChild.id) //store this in a var so can be put back in 
-				pieces.splice(i,1)
-
-		}
-	}
-	var check
-
-	var whiteCheck=Boolean(localStorage.getItem("whiteCheck"))
-	if (turn=="white"){
-		alert("chec3")
-             if(document.getElementById(targetSquare).firstElementChild){
-                  var removePiece=document.getElementById(targetSquare).firstElementChild
-                  for(var i=0;i<pieces.length;i++){
-                  	if(pieces[i]==removePiece){
-                  		pieces=pieces.splice[i]
-                  		var putBack=i
-                  	}
-                  }
-             }
-        alert("pieces="+pieces)
-        for(var i=0;i<Squares.length;i++){
-        	if(document.getElementById(targetSquare).firstElementChild){
-        		var tryPiece=document.getElementById(targetSquare).firstElementChild.id
-        	    alert(tryPiece+"trypiece line 777")
-        	    for(var i=0;i<Squares.length;i++){
-		    	alert("checking.....")
-         	var testKing=document.getElementById(Squares[i])
-         	alert("testKing="+testKing)
-        	if(testKing.firstElementChild!=null){
-        		var test=testKing.firstElementChild.id
-        	    if(test=="white13"){
-        	    var kingSquare=Squares[i]
-                alert("kingSquare+"+kingSquare)
-        	}
-        }
-
-         }
-                 for(var i=0;i<Squares.length;i++){
-         	alert("checing squares")
-        	if(document.getElementById(Squares[i]).firstElementChild){  //trying to take king with each piece UNLESS HAS JUST BEEN TAKEN i.e so isn't in pieces
-                
-        		var tryPiece=document.getElementById(Squares[i]).firstElementChild.id
-        	    alert(tryPiece+"trypiece")
-        	    alert("squares="+Squares[i])
-        	    alert("pieces 800" +pieces)
-        	    
-        	    for(var i=0;i<pieces.length;i++){
-        	    if(tryPiece==pieces[i]){
-        	    	alert("803 tryPiece="+tryPiece+"pieces[i]"+pieces[i])
-
-        	    	alert("tryPiece="+tryPiece+" piece taken")
-        	    	clicked(tryPiece,Squares[i])
-	        	    var result=move(kingSquare)
-	        	    localStorage.setItem("whiteCheck",true)
-	        	    alert("HERE UNDERNEATH RESULT=move")
-	        	    alert("result of checktry="+result)
-	        	    check=false
-        	}
-        	}
-        }
-
-        alert(check)
-        if(check==true){
-        	alert("in check")
-        	return 
-        }
-         }
-               
-         alert()    //reinitialise old values and continue (I.e IF NOT IN CHECK)
-
-         }
-     }
-        }
-      var blackCheck=Boolean(localStorage.getItem("blackCheck"))
-      if(turn=="black"){
-      	alert("chec4")
-             if(document.getElementById(targetSquare).firstElementChild){
-             	alert("checking squares")
-                  var removePiece=document.getElementById(targetSquare).firstElementChild
-                  for(var i=0;i<pieces.length;i++){
-                  	if(pieces[i]==removePiece){
-                  		pieces.splice[i]
-                  		var putBack=i
-                  	}
-                  }
-             }
-        
-
-        
-        }
-	
-	
+	 }
        
-	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
+	document.getElementById(square).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
    
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
     
      
-	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
+	document.getElementById(square).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
+    
+
         
 
         var num=current.slice(row) 
     	var fullPiece = turn+num
         var pawns = JSON.parse(localStorage.getItem('pawns'));
-        alert(pawns)
+        
 
     	for(var i =0;i <pawns.length;i++){
     		
     		
     		if(pawns[i]==fullPiece){
-    			//alert("found piece!")   //if is here give it two moves then remove from list
+    			
     			 alert("piece in pawns list")
 
     		     var newPawns =[]
@@ -867,20 +657,20 @@ function move(square){
     		     localStorage.setItem('pawns', JSON.stringify(pawns));
     		     var pawnsNow=JSON.parse(localStorage.getItem('pawns'))
     		     alert("pawns list now=" +pawnsNow)
+
     		}
     	}
-    if (turn =="white"){
-    	
-    	alert("changing turn to black")
+    
+    alert("747")
+    if(turn=="white"){
     	localStorage.setItem("turn","black")
-    	return true //poss change this
     }
-    if (turn =="black"){
-    	alert("changing turn to white")
+    if(turn=="black"){
     	localStorage.setItem("turn","white")
-    	return true  //poss change this 
     }
-}
+
+    
+
 }
    
    
