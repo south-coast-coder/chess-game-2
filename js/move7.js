@@ -832,46 +832,21 @@ function move(square){
                   	}
                   }
              }
-        alert(pieces)
+        
 
         
         }
 	
-	//If have clicked on a piecce (not empty square first remove this from checklist)
-	// CHECK HERE   move(checkPiece, )  - now loop through all remining pieces and try to take king
-	// Here just before ..the code below that changes images ..check if target piece is king (as all avove code must have worked...if check==false (put thsi in local stoarge) set it to true and don;t allow moves until change ..)
-	// if(turn=="white"){
-	/// 	    localStorage.setItem("whiteCheck",false)
-	 //	    whiteCheck==false
 	
-	 //	    alert("850")
-        	// return true   //STOPS IMAGE FROM LOADING
-        
-  //      if(turn=="black"&&blackCheck==true){
-   //     	blackCheck==false
-   //     	alert("854")
-   //     	localStorage.setItem("blackCheck",false)
-        	//return true
        
 	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
-    //alert("to replace" + lastSquare)
+   
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
-     alert("just before LOAD")
-     alert("piece="+piece+"line 868")
-       if(turn=="white"&&whiteCheck=="true"){
-       	alert("CHECL")
-       	return false
-       }
-       if(turn=="black"&&blackCheck=="true"){
-       	alert("Checl")
-       	return false
-       }
-		document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
-        document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
-        if(turn=="white"){
-        	localStorage.setItem("whiteCheck","false")}
-         if(turn=="black"){
-        	localStorage.setItem("blackCheck","false")}
+    
+     
+	document.getElementById(targetSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
+    document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
+        
 
         var num=current.slice(row) 
     	var fullPiece = turn+num
