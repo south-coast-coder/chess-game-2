@@ -608,6 +608,42 @@ function move(square){
 		alert("select a piece first!")
 		return false
 	}
+	var whiteCheck=localStorage.getItem("whiteCheck")
+	var blackCheck=localStorage.getItem("blackCheck")
+	for(var i=0;i<Squares.length;i++){
+		    	
+         	var testKing=document.getElementById(Squares[i])
+         	alert("testKing="+testKing)
+        	if(testKing.firstElementChild!=null){
+        		var test=testKing.firstElementChild.id
+        		alert("test="+test)
+        		if(turn=="white"){
+        	    if(test=="white13"){
+        	    var kingSquare=Squares[i]
+                alert("kingSquare+"+kingSquare)
+        	}
+        }
+               if(turn=="black"){
+               	if(test=="black13"){
+        	    var kingSquare=Squares[i]
+                alert("kingSquare+"+kingSquare)
+        	}
+
+               }
+
+         }
+     }
+             if(document.getElementById(targetSquare).firstElementChild){
+             	
+                  var removePiece=document.getElementById(targetSquare).firstElementChild
+                  for(var i=0;i<pieces.length;i++){
+                  	if(pieces[i]==removePiece){
+                  		pieces=pieces.splice[i,1]
+                  		var putBack=i
+                  		alert(pieces+"<-pieces in")
+                  	}
+                  }
+             }
 	
 	
 	
