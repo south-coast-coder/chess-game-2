@@ -4,7 +4,7 @@ function move(square){
 
 	var nums = [1,2,3,4,5,6,7,8]
 	var numsLet = ["One","Two","Three","Four","Five","Six","Seven",'Eight']
-    var pieces =["black1","black2","black9"]
+    var pieces =["black1","black2","black9","black16"]
     function popSquares(){
 	  var Squares=[]
       var Rows=["One","Two","Three","Four","Five","Six","Seven","Eight"]
@@ -18,7 +18,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Three5","Two5","Four8"]
+	Squares=["Three5","Two5","Four8","Three5"]
 
 	
 
@@ -633,16 +633,24 @@ function move(square){
 
          }
      }
+     alert("636 pieces="+pieces)
+     alert("pieces.length="+pieces.length)
              if(document.getElementById(targetSquare).firstElementChild){
+             	alert("637")
              	
                   var removePiece=document.getElementById(targetSquare).firstElementChild
+                  alert("remove Piece"+removePiece)
+
                   for(var i=0;i<pieces.length;i++){
-                  	if(pieces[i]==removePiece){
-                  		pieces=pieces.splice[i,1]
-                  		var putBack=i
-                  		alert(pieces+"<-pieces in")
+                  	if(pieces[i]==removePiece.id){
+                  		alert("645 pieces[i]="+pieces[i])
+                  		var spliceIndex=i
+                  	    break
+                  		 
                   	}
                   }
+                 pieces.splice(spliceIndex,1)
+                  alert("pieces out 651 ->"+pieces)
              }
 	
 	
@@ -653,7 +661,7 @@ function move(square){
 	alert("square"+square)
 
 	
-      
+    // HERE need to run move against king - when you do set blackCheck to true (in local storage before running -won't run on last pass and will reset to false)
       
 	if(document.getElementById(square).firstElementChild){
 	if (document.getElementById(square).firstElementChild.id[0] ==firstLetter){   //if click on square with your own piece it will do nothing
@@ -662,16 +670,33 @@ function move(square){
 
 	}
 	 }
-       
+
+
+    var prevHTML=document.getElementById(square).innerHTML
+    alert("prevHTML"+prevHTML)
 	document.getElementById(square).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
    
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
     
      
-	document.getElementById(square).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
-    document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
+	
     
-
+    if(whiteCheck=="true"){ //This will allow to make the move and see if would put you in check (or not get you out of it)
+    	alert("in check")
+        document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
+        document.getElementById(targetSquare).innerHTML=prevHTML
+        localStorage.setItem("whiteCheck","false")
+        return
+    }
+    if(blackCheck=="true"){
+    	{ //This will allow to make the move and see if would put you in check (or not get you out of it)
+    	alert("in check")
+        document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
+        document.getElementById(targetSquare).innerHTML=prevHTML
+        localStorage.setItem("blackCheck","false")
+        return
+    }
+    }
         
 
         var num=current.slice(row) 
@@ -700,9 +725,11 @@ function move(square){
     alert("747")
     if(turn=="white"){
     	localStorage.setItem("turn","black")
+    	 localStorage.setItem("whiteCheck","false")
     }
     if(turn=="black"){
     	localStorage.setItem("turn","white")
+    	 localStorage.setItem("blackCheck","false")
     }
 
     
