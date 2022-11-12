@@ -6,7 +6,7 @@ function move(square){
 	var numsLet = ["One","Two","Three","Four","Five","Six","Seven",'Eight']
 	var turn = localStorage.getItem("turn")
     if(turn=="white"){
-    var pieces =["black9","black16","black13"]  
+    var pieces =["black6"]  
     }
     if(turn=="black"){
     var pieces=["white9","white13"]
@@ -27,7 +27,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Six5","Seven5","Three4","Three5","Two5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
+	Squares=["Six5","Seven5","Three4","Three5","Two5","Four6","Four5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
 
 
 	
@@ -134,21 +134,22 @@ function move(square){
 
 			   }
 			  }
-    	alert("in pawn")
-    	if (turn=="white" && (targRow<currentRow)){
-    		("invalid row")
+    	alert("137 in pawn")
+    	if (turn=="white" && (targRow<currentRow) &&whiteCheck=="false"){
+    		alert ("invalid row")
     		return
     	}
     	if(turn=='black'&&(targRow>currentRow)){
     		alert("invalid row")
     		return
     	}
+    	alert("146")
     	var num=current.slice(row) 
     	var fullPiece = turn+num
         const pawns = JSON.parse(localStorage.getItem('pawns'));
         var FoundPawn=false
 
-         if(turn=="white"){
+         if(turn=="white" &&whiteCheck=="false"){
          	alert('white in pawn')
     	    	if(targRow<currentRow){
     	    		return
@@ -156,7 +157,7 @@ function move(square){
     	    	var checkRow=targRow-1
 
     	    }
-    	    if (turn=="black"){
+    	    if (turn=="black" &&blackCheck=="false"){
     	    	alert("black in pawn")
     	    	if(targRow>currentRow){
     	    		return
@@ -186,7 +187,7 @@ function move(square){
     			return 
     		}
     		
-    		
+    		alert("190")
     	   
     	    for(var i in nums){
                   if (checkRow ==nums[i]){
@@ -218,10 +219,10 @@ function move(square){
 
     
     	
-       if((targRow!=currentRow && currentCol !=targCol)){  //THIS WILL STOP DIAGONAL FROM WORKING
-    		 alert("here5")
-    		return
-    	}  
+       //if((targRow!=currentRow && currentCol !=targCol)){  //THIS WILL STOP DIAGONAL FROM WORKING
+    	//	 alert("here5")
+    	//	return
+    	//}  
     
 
     	alert("Here3")
@@ -243,6 +244,14 @@ function move(square){
     			var diagSquare=document.getElementById(useRow+targCol).firstElementChild
     			if(diagSquare==null){
     				alert("invalid empty square")
+    				return
+    			}
+    			if(targRow==currentRow){
+    				alert("invalid move")
+    				return
+    			}
+    			if(Math.abs(targRow-currentRow)>1){
+    				alert("invalid move")
     				return
     			}
     		}
@@ -793,10 +802,14 @@ function move(square){
         
 
         var num=current.slice(row) 
-    	var fullPiece = turn+num
+        var turn2 = localStorage.getItem("turn")
+        alert("turn2"+turn2)
+    	var fullPiece = turn2+num
         var pawns = JSON.parse(localStorage.getItem('pawns'));
         
-
+        alert("808 befgore pawns")
+        alert("809 pawns"+pawns)
+        alert("fullPiece"+fullPiece)
     	for(var i =0;i <pawns.length;i++){
     		
     		

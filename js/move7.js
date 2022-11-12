@@ -21,7 +21,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["One1","Two4","Two5","Four8","Three4","Three5"]
+	Squares=["One1","Two4","Two5","Four8","Three4","Three5","Four6"]
 
 	
 
