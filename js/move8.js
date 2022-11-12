@@ -4,7 +4,13 @@ function move(square){
 
 	var nums = [1,2,3,4,5,6,7,8]
 	var numsLet = ["One","Two","Three","Four","Five","Six","Seven",'Eight']
-    var pieces =["white9"]  // "black1","black2","black9","black16"
+	var turn = localStorage.getItem("turn")
+    if(turn=="white"){
+    var pieces =["black9","black16","black13"]  
+    }
+    if(turn=="black"){
+    var pieces=["white9","white13"]
+     }
     function popSquares(){
 	  var Squares=[]
       var Rows=["One","Two","Three","Four","Five","Six","Seven","Eight"]
@@ -21,7 +27,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Six5","Seven5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
+	Squares=["Six5","Seven5","Three4","Three5","Two5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
 
 
 	
@@ -70,7 +76,7 @@ function move(square){
 	//alert("piece is a " + piece)
 	var testPiece=localStorage.getItem("piece")
 	var lastSquare=localStorage.getItem('currentSquare');
-	var turn = localStorage.getItem("turn")
+	
 	var whiteCheck=localStorage.getItem("whiteCheck")
     var blackCheck=localStorage.getItem("blackCheck")
 	
