@@ -4,7 +4,7 @@ function move(square){
 
 	var nums = [1,2,3,4,5,6,7,8]
 	var numsLet = ["One","Two","Three","Four","Five","Six","Seven",'Eight']
-    var pieces =["black9","black16"]  // "black1","black2","black9","black16"
+    var pieces =["white9"]  // "black1","black2","black9","black16"
     function popSquares(){
 	  var Squares=[]
       var Rows=["One","Two","Three","Four","Five","Six","Seven","Eight"]
@@ -21,7 +21,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Three4","Three5","Two5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
+	Squares=["Six5","Seven5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
 
 
 	
@@ -73,11 +73,10 @@ function move(square){
 	var turn = localStorage.getItem("turn")
 	var whiteCheck=localStorage.getItem("whiteCheck")
     var blackCheck=localStorage.getItem("blackCheck")
-	alert("72 turn="+turn)
-	alert("75 whitechcekc"+whiteCheck +"black" +blackCheck)
+	
 	if(testPiece[0]!=turn[0]){
 		if(whiteCheck=="true"||blackCheck=="true"){
-			alert("76 testing")
+			
 		}
 
 		else{
@@ -634,7 +633,7 @@ function move(square){
 	}
 	var whiteCheck=localStorage.getItem("whiteCheck")
 	var blackCheck=localStorage.getItem("blackCheck")
-	alert("613 whiteCheck"+whiteCheck)
+	
 	if((turn =="white" && whiteCheck=="false")||(turn=="black" && blackCheck=="false")){
 	for(var i=0;i<Squares.length;i++){
 		    	
@@ -661,31 +660,27 @@ function move(square){
      }
     
              if(document.getElementById(targetSquare).firstElementChild){
-             	alert("637")
+             	
              	
                   var removePiece=document.getElementById(targetSquare).firstElementChild
-                  alert("remove Piece"+removePiece)
-
+                 
                   for(var i=0;i<pieces.length;i++){
                   	if(pieces[i]==removePiece.id){
-                  		alert("645 pieces[i]="+pieces[i])
+                  		
                   		var spliceIndex=i
                   	    break
                   		 
                   	}
                   }
                  pieces.splice(spliceIndex,1)
-                  alert("pieces out 651 ->"+pieces)
+                  
              }
 	
 	
 	
-	alert("614 piece="+piece)
-	alert("target suqare="+targetSquare)
-	alert("current")
-	alert("square"+square)
+	
     }
-	alert("666 whiteCheck"+whiteCheck)
+	
     // HERE need to run move against king - when you do set blackCheck to true (in local storage before running -won't run on last pass and will reset to false)
     if((turn=="white"&& whiteCheck=="false")||(turn="black" && blackCheck=="false")){
 	if(document.getElementById(square).firstElementChild){
@@ -703,8 +698,7 @@ function move(square){
     var turn2 = localStorage.getItem("turn")
 
 
-    alert("681 turn2"+turn2)
-    alert("680 turn"+turn2+"whiteCheck"+whiteCheck)
+    
     if(turn2=="white"&&whiteCheck=="true"){
     	alert("682 in check")
     	var check="true"
