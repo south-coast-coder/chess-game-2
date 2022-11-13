@@ -9,7 +9,7 @@ function move(square){
     var pieces =["black6"]  
     }
     if(turn=="black"){
-    var pieces=["white9","white13"]
+    var pieces=["white9","white13","white14","white10"]
      }
     function popSquares(){
 	  var Squares=[]
@@ -27,7 +27,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Six5","Seven5","Three4","Three5","Two5","Four6","Four5"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
+	Squares=["Four6","Four2","Five4","Seven5","Four5","Four4"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
 
 
 	
