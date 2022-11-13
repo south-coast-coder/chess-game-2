@@ -1,5 +1,5 @@
 function clicked(piece,square){
-	alert("Clicked")
+	
 	
 	var piece=piece
 	localStorage.setItem("piece",piece)

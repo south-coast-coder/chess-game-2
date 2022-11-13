@@ -1,6 +1,9 @@
 function turn(){
 	localStorage.setItem("whiteCheck","false")
 	localStorage.setItem("blackCheck","false")
+    
+    var queens=[]
+    localStorage.setItem("queens",JSON.stringify(queens));
 	var pawns=[]
 	for(var i =1; i <17;i++){
 		var piece ="white"+i
@@ -13,7 +16,7 @@ function turn(){
 	alert(pawns)
 	//alert(pawns[0])
 	//alert(pawns[1])
-	localStorage.setItem("turn","black")
+	localStorage.setItem("turn","white")
 	localStorage.setItem('pawns', JSON.stringify(pawns));
 	var turn = localStorage.getItem("turn")
 	//alert("it is " + turn + "s turn")

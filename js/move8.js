@@ -27,7 +27,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Four6","Four2","Five4","Seven5","Four5","Four4"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
+	Squares=["Six1","Four6","Four2","Five4","Seven5","Four5","Four4"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
 
 
 	
@@ -63,7 +63,7 @@ function move(square){
             	var piece ="bishop"
             	return piece
             }
-            if (num==12){
+            if (num==12 || num>16){
             	var piece ="queen"
             	return piece
             }
@@ -119,7 +119,7 @@ function move(square){
 
    
    if (piece =="pawn"){
-   	alert("pawn detected")
+   	
    	for(var i in nums){
                   if (targRow ==nums[i]){
 			           var useRow=numsLet[i]
@@ -134,7 +134,7 @@ function move(square){
 
 			   }
 			  }
-    	alert("137 in pawn")
+    	
     	if (turn=="white" && (targRow<currentRow) &&whiteCheck=="false"){
     		alert ("invalid row")
     		return
@@ -143,14 +143,14 @@ function move(square){
     		alert("invalid row")
     		return
     	}
-    	alert("146")
+    	
     	var num=current.slice(row) 
     	var fullPiece = turn+num
         const pawns = JSON.parse(localStorage.getItem('pawns'));
         var FoundPawn=false
 
          if(turn=="white" &&whiteCheck=="false"){
-         	alert('white in pawn')
+         	
     	    	if(targRow<currentRow){
     	    		return
     	    	}
@@ -158,28 +158,26 @@ function move(square){
 
     	    }
     	    if (turn=="black" &&blackCheck=="false"){
-    	    	alert("black in pawn")
+    	    	
     	    	if(targRow>currentRow){
     	    		return
     	    	}
     	    	 var checkRow=targRow+1
-    	    	 alert("here")
+    	    	 
     	    }
-    	alert("here2")
+    	
     	for(var i =0;i <pawns.length;i++){
     		
     		if(pawns[i]==fullPiece){
-    			alert(pawns[i])
+    			
     			FoundPawn=true
-    			alert(fullPiece)
-
-    			alert("found piece!") 
+    			
     			break
     			}  //if is here give it two moves then remove from list
     		}
     		if (FoundPawn==true){
     		if(targRow>(currentRow+2)&& currentCol !=targCol){  // on first move can move two squares
-    			alert("here!")
+    			
     			return 
     		}
     		if(Math.abs(targRow-currentRow)>2){
@@ -187,7 +185,7 @@ function move(square){
     			return 
     		}
     		
-    		alert("190")
+    		
     	   
     	    for(var i in nums){
                   if (checkRow ==nums[i]){
@@ -225,20 +223,19 @@ function move(square){
     	//}  
     
 
-    	alert("Here3")
+    	
     	
     		for(var i in nums){
             if (targRow ==nums[i]){
 			var useRow=numsLet[i]
-			alert("under Here3")
+			
 			//alert("Test for doc get elem in bish func" + useRow + targCol)
 
 			
 		   }
 		}
     		var col =parseInt(currentCol)
-    		alert(col+1)
-    		alert(targCol)
+    		
     		if(targCol == (col+1) || targCol ==(col-1)){
     			alert("diagonal")
     			var diagSquare=document.getElementById(useRow+targCol).firstElementChild
@@ -279,8 +276,7 @@ function move(square){
 		    	return false 
     	}
     	    if(Math.abs(targCol - currentCol) > 0 ){
-    	    	alert("diff Col")
-    	    	alert(Math.abs(targCol-currentCol)+"+<- difference between the Cols")
+    	    	
     	    	 for(var i in nums){
                   if (targRow ==nums[i]){
 			           var useRow=numsLet[i]
@@ -289,9 +285,9 @@ function move(square){
 			   }
 			  }
 	    if(targCol>currentCol){
-	    	alert("target Column greater")
+	    	
 
-             alert(currentCol)
+             
              var startCol=parseInt(currentCol)+1
              var finishCol=parseInt(targCol)-1
              alert("start="+startCol+"finsih="+finishCol)
@@ -608,6 +604,7 @@ function move(square){
         }
 		else{
 		var piece = "assets/pawn.png"
+		var pawnPiece="true"
 	    }
 		}
 
@@ -635,6 +632,7 @@ function move(square){
         }
 		else{
 		var piece = "assets/pawn2.png"
+		var pawnPiece="true"
 		//alert("pawn loaded")
 	}
 	}               //check whose turn it is 
@@ -746,22 +744,19 @@ function move(square){
         	    
         	    for(var j=0;j<pieces.length;j++){
         	    if(tryPiece==pieces[j]){
-        	    	alert("tryPiece="+tryPiece+" piece taken")
+        	    	
                     var whiteCheck=localStorage.getItem("whiteCheck")
                     var blackCheck=localStorage.getItem("blackCheck")
-                    alert("708 whitecheck"+whiteCheck+"blackCehck"+blackCheck)
-                    alert("713 kingSquare="+kingSquare)
+                   
                     if( kingPiece=="true"){
-                    	alert("king last moved! 719")
+                    	
                     	kingSquare=square
                     }
                     localStorage.setItem("whiteCheck","true")
                     localStorage.setItem("blackCheck","true")
-                    alert("719 kingSquare="+kingSquare)
+                   
 	        	    var result=move(kingSquare)
-	        	    alert("HERE UNDERNEATH RESULT=move")
-	        	    alert("711 whitecheck"+whiteCheck+"blackCehck"+blackCheck)
-	        	    alert("result of checktry="+result)
+	        	    
 	        	    if (result=="true"){
 	        	    	alert("in check")
 	        	    	document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
@@ -803,7 +798,7 @@ function move(square){
 
         var num=current.slice(row) 
         var turn2 = localStorage.getItem("turn")
-        alert("turn2"+turn2)
+        
     	var fullPiece = turn2+num
         var pawns = JSON.parse(localStorage.getItem('pawns'));
         
@@ -841,7 +836,38 @@ function move(square){
     }
     alert("747")
     var turn2 = localStorage.getItem("turn")
+    alert(fullPiece)
+    alert("845 square.charAt(0)"+square.charAt(0))
+  
+    alert("847 fullpiece"+fullPiece)
+    if(turn2=="white" && square.charAt(0)=="E" || turn2=="black" && square.charAt(0)=="O"){
+    alert("848")
+    if(pawnPiece=="true"){
+    	alert("846 queen reached!")
+    	if(turn2=="white"){
+    		piece="assets/queen.png"
+    	}
+    	if(turn2=="black"){
+    		piece="assets/queen2.png"
+    	}
     
+    var queens = JSON.parse(localStorage.getItem('queens'));
+    if(queens.length==0){
+    	current=turn2+"17"
+    	queens.push(17)
+
+    }else{
+    var lastQueen=queens.slice(-1)
+    alert("868 lastQueen"+lastQueen)
+    var newQueen=(parseInt(lastQueen))+1
+    current=turn2+(newQueen.toString())
+    queens.push(newQueen)
+
+     }
+     localStorage.setItem('queens', JSON.stringify(queens));
+     alert("864 Queens"+queens+"pice"+piece+"current"+current)
+ }
+    }
     document.getElementById(square).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
    
     document.getElementById(lastSquare).innerHTML = ""
@@ -858,9 +884,9 @@ function move(square){
     	 localStorage.setItem("blackCheck","false")
     }
 
-    
+    }
 
-}
+
    
    
 
