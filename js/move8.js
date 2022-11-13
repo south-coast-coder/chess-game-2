@@ -6,7 +6,7 @@ function move(square){
 	var numsLet = ["One","Two","Three","Four","Five","Six","Seven",'Eight']
 	var turn = localStorage.getItem("turn")
     if(turn=="white"){
-    var pieces =["black6"]  
+    var pieces =["black6","black15","black16"]  
     }
     if(turn=="black"){
     var pieces=["white9","white13","white14","white10"]
@@ -27,7 +27,7 @@ function move(square){
 	      return Squares
 	}
 	// Squares=popSquares()
-	Squares=["Six1","Four6","Four2","Five4","Seven5","Four5","Four4"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
+	Squares=["Six1","Four6","Four2","Five4","Seven5","Four5","Four4","Five8","Three4","Two5","Two6"] // "Seven5","Three5","Two5","Four8","Three5","Three4",
 
 
 	
