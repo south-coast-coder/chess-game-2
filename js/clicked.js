@@ -8,11 +8,11 @@ function clicked(piece,square){
 	var blackCheck=localStorage.getItem("blackCheck")
 	if(piece[0]!=turn[0]){
 		if(turn=="white" && whiteCheck=="true"){
-			alert("testing check in click 10 pass")
+			
 
 		}
 		else if(turn=="black" && blackCheck=="true"){
-			alert("testing check in click 10 pass")
+			
 
 		}
 
@@ -32,8 +32,7 @@ function clicked(piece,square){
 	}
     catch{
 	var name="no square"
-	alert ("no square")
-	console.log("name"+name)
+	
 	localStorage.setItem('currentPiece', piece);
 	localStorage.setItem('currentSquare', name);
 }
