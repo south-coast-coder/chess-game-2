@@ -435,6 +435,10 @@ function move(square){
     		
     		return
     	}
+    	else if ((targRow==(currentRow-2)) && (targCol ==(currentCol+2))){ // < TEST THIS FIRST
+    		
+    		return
+    	}
     else if ((targRow==(currentRow+1))&& (targCol ==(currentCol+2))){
     		
     		return
@@ -443,6 +447,11 @@ function move(square){
     		
     		return
     	}
+    else if ((targRow==(currentRow-1))&& (targCol ==(currentCol-2))){
+    		
+    		return
+    	}
+
     else if ((targRow==(currentRow+1))&& (targCol ==(currentCol-2))){
     		
     		return
@@ -711,7 +720,7 @@ function move(square){
     if((turn=="white"&& whiteCheck=="false")||(turn="black" && blackCheck=="false")){
 	if(document.getElementById(square).firstElementChild){
 	if (document.getElementById(square).firstElementChild.id[0] ==firstLetter){   //if click on square with your own piece it will do nothing
-		alert("Own Piece")
+		// alert("Own Piece")
 		return
 
 	}
@@ -795,10 +804,10 @@ function move(square){
          }
      
 	
-    alert("777")
+    
     if(turn =="white" && result=="true"){ //This will allow to make the move and see if would put you in check (or not get you out of it)
-    	alert("766 in check")
-    	alert("trypiece+"+tryPiece)
+    	alert("in check")
+    	alert("put in check by"+tryPiece)
         document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
         document.getElementById(targetSquare).innerHTML=prevHTML
         localStorage.setItem("whiteCheck","false")
@@ -807,7 +816,8 @@ function move(square){
     }
     if(turn=="black" && result=="true"){
     	 //This will allow to make the move and see if would put you in check (or not get you out of it)
-    	alert("813 in check")
+    	alert("in check")
+    	alert("put in check by"+tryPiece)
         document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
         document.getElementById(targetSquare).innerHTML=prevHTML
         localStorage.setItem("blackCheck","false")
