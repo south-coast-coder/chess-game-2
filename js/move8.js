@@ -114,6 +114,8 @@ function move(square){
 	var currentCol = lastSquare.slice(-1)
 	var targRow = targetSquare.substr(0, targetSquare.length - 1)
 	var currentRow = lastSquare.substr(0,lastSquare.length -1)
+	
+	
 	//alert("value initially targCol"+ targCol+"targ Row "+targRow +"currentrow " +currentRow+"current Col"+currentCol)
 	for (var i in numsLet){   //Convert column name from string to number so can compare difference
 		
@@ -228,7 +230,7 @@ function move(square){
     		}
     	    
     	}
-        alert("221")
+       
     	//alert("foundpawn="+FoundPawn)
     	if(FoundPawn==false){   //i.e if already had two moves and been remvoed from pawn list
     		if(Math.abs(targRow-currentRow)>1){
@@ -296,10 +298,10 @@ function move(square){
     
 
     function castleMove(targCol, currentCol){
-    	  
+    	    
     	 
 		    if ((Math.abs(targCol - currentCol) > 0 )&& (Math.abs(targRow - currentRow )>0)){  //testing change this and generalise once works - this is for pawns
-		    	//alert("Invalid move ")  
+		    	
 		    	return false 
     	}
     	    if(Math.abs(targCol - currentCol) > 0 ){
@@ -322,7 +324,7 @@ function move(square){
 			
 			if(document.getElementById(useRow+i)){
 			if(document.getElementById(useRow+i).firstElementChild!=null){
-				alert("square occupied")
+				
 				return false
                   
 			}
@@ -451,19 +453,19 @@ function move(square){
     }
     }
     function bishopMove (targCol,targRow){
-    	 alert("449 in bish move ")
+    	
          if (currentCol ==targCol && currentRow==targRow){
          	//alert("ended bishopMove")
-         	return 
+         	return false
          }
          if(!targRow || !targCol){
          	//alert("no targ")
          	return false
          }
-        // if(Math.abs(targRow-currentRow) != Math.abs(targCol-currentCol)){
-          //  alert("459 invalid")
-         //	return false
-         //}
+         if(Math.abs(targRow-currentRow) != Math.abs(targCol-currentCol)){
+            
+         	return false
+         }
          
          if(currentRow==targRow){
          	
@@ -514,7 +516,7 @@ function move(square){
          return bishopMove(targCol,targRow)
     }   //for queen try pawnMove bishopMove and castleMove as can do all three
     if (piece =="bishop"){
-         alert("512 here")
+        
     	//first check if is a valid move (should be a maths way to do this)
     	if (targCol==currentCol){
     		
@@ -526,6 +528,7 @@ function move(square){
     	}
     	//alert("math.abs current row - targ "+(Math.abs(currentRow-targRow)))
     	//alert("same for col"+ Math.abs(currentCol-targCol))
+    	
     	if (Math.abs(currentRow-targRow) != (Math.abs(currentCol-targCol))){
     		
     			return false
@@ -536,6 +539,7 @@ function move(square){
     	result=bishopMove(targCol,targRow)
     	
     	if(result==false){
+    		
     		
     		return   //Once this function works add it and castle check and pawn check to Queen - try all and have the others as catch 
     	}
@@ -574,8 +578,9 @@ function move(square){
     			
     			result=bishopMove(targCol,targRow)
     			if(result==false){
+    			
     				
-    				return 
+    				return false
     			}
     		}
     	}
@@ -701,7 +706,7 @@ function move(square){
 	
 	
     }
-	alert("685")
+	
     // HERE need to run move against king - when you do set blackCheck to true (in local storage before running -won't run on last pass and will reset to false)
     if((turn=="white"&& whiteCheck=="false")||(turn="black" && blackCheck=="false")){
 	if(document.getElementById(square).firstElementChild){
@@ -721,15 +726,14 @@ function move(square){
 
     
     if(turn2=="white"&&whiteCheck=="true"){
-    	alert("trypiece="+tryPiece)
-    	alert("702 in check")
+    	
     	var check="true"
     	localStorage.setItem("whiteCheck","false")
     	localStorage.setItem("blackCheck","false")
     	return check
     }
     if(turn2=="black"&&blackCheck=="true"){
-    	alert("in check")
+    	alert("739 in check")
     	var check="true"
     	localStorage.setItem("whiteCheck","false")
     	localStorage.setItem("blackCheck","false")
@@ -740,7 +744,7 @@ function move(square){
     document.getElementById(lastSquare).innerHTML = '' //removes piece from old square
     
     
-    alert("730 Squares.length="+Squares.length+"pieces.length="+pieces.length)
+    
     for(var i=0;i<Squares.length;i++){
             localStorage.setItem("blackCheck","true")
             localStorage.setItem("whiteCheck","true")
@@ -771,13 +775,13 @@ function move(square){
                     localStorage.setItem("blackCheck","true")
                    
 	        	    var result=move(kingSquare)
-	        	   
+	        	 
 	        	    
 	        	    if (result=="true"){
 	        	    	alert("747 in check typiece="+tryPiece)
 	        	    	document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
-                       document.getElementById(targetSquare).innerHTML=prevHTML
-                       localStorage.setItem("whiteCheck","false")
+                        document.getElementById(targetSquare).innerHTML=prevHTML
+                         localStorage.setItem("whiteCheck","false")
                        localStorage.setItem("blackCheck","false")
 	        	    	
 
@@ -803,14 +807,14 @@ function move(square){
     }
     if(turn=="black" && result=="true"){
     	 //This will allow to make the move and see if would put you in check (or not get you out of it)
-    	alert("in check")
+    	alert("813 in check")
         document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
         document.getElementById(targetSquare).innerHTML=prevHTML
         localStorage.setItem("blackCheck","false")
         localStorage.setItem("whiteCheck","false")
         return
     }
-        alert("800")
+       
     
         
 
@@ -820,7 +824,7 @@ function move(square){
     	var fullPiece = turn2+num
         var pawns = JSON.parse(localStorage.getItem('pawns'));
         
-        alert("794")
+       
         localStorage.setItem("blackCheck","false")
         localStorage.setItem("whiteCheck","false")
     	for(var i =0;i <pawns.length;i++){
@@ -885,7 +889,7 @@ function move(square){
     document.getElementById(square).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+targetSquare+'\')">'; //puts piece in new square
    
     document.getElementById(lastSquare).innerHTML = ""
-    alert("855 NOT REACHING HERE")
+    
     if(turn2=="white"){
     	alert("changing turn to black")
     	localStorage.setItem("turn","black")

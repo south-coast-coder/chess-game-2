@@ -16,7 +16,7 @@ function turn(){
 	alert(pawns)
 	//alert(pawns[0])
 	//alert(pawns[1])
-	localStorage.setItem("turn","white")
+	localStorage.setItem("turn","black")
 	localStorage.setItem('pawns', JSON.stringify(pawns));
 	var turn = localStorage.getItem("turn")
 	//alert("it is " + turn + "s turn")
