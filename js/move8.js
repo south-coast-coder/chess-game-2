@@ -234,7 +234,7 @@ function move(square){
     	//alert("foundpawn="+FoundPawn)
     	if(FoundPawn==false){   //i.e if already had two moves and been remvoed from pawn list
     		if(Math.abs(targRow-currentRow)>1){
-    			alert("pawn only has one move")
+    			
     			return
     		}
     	}
@@ -261,7 +261,7 @@ function move(square){
     		var col =parseInt(currentCol)
     		
     		if(Math.abs(targCol-currentCol)>1){
-    			alert("too far")
+    			
     			return
     		}
     		if(targCol == (col+1) || targCol ==(col-1)){
@@ -424,6 +424,10 @@ function move(square){
     		return
     	}
     	else if((targRow==(currentRow+2))&& (targCol ==(currentCol-1))){
+    		
+    		return
+    	}
+    	else if((targRow==(currentRow-2))&& (targCol ==(currentCol+1))){
     		
     		return
     	}
@@ -742,7 +746,7 @@ function move(square){
     	return check
     }
     if(turn2=="black"&&blackCheck=="true"){
-    	alert("739 in check")
+    	alert("in check")
     	var check="true"
     	localStorage.setItem("whiteCheck","false")
     	localStorage.setItem("blackCheck","false")
@@ -787,7 +791,7 @@ function move(square){
 	        	 
 	        	    
 	        	    if (result=="true"){
-	        	    	alert("747 in check typiece="+tryPiece)
+	        	    	alert("in check by piece"+tryPiece)
 	        	    	document.getElementById(lastSquare).innerHTML = '<img src="'+ piece  +'" class="piece" id="'+ current +'"" onclick="clicked(\''+current+'\',\''+lastSquare+'\')">'; //puts piece back where it was if in check
                         document.getElementById(targetSquare).innerHTML=prevHTML
                          localStorage.setItem("whiteCheck","false")

@@ -8,26 +8,27 @@
 </head>
 <body onload="turn()">
 <div id="board" style="display: flex;flex-wrap: wrap;">
- <div class="row" style="width: 100%;display: flex;flex-wrap: wrap;">
-	<div class="square1" id="One1" onclick="move('One1')"><img src="assets/pawn.png" alt="" class="piece" id="white1"onclick="clicked('white1','One1')"></div>
-	<div class="square2" id="One2"onclick="move('One2')"><img src="assets/pawn.png" alt="" class="piece" id="white2"onclick="clicked('white2','One2')"></div>
-	<div class="square1" id="One3" onclick="move('One3')"><img src="assets/pawn.png" alt="" class="piece" id="white3"onclick="clicked('white3','One3')"></div>
-	<div class="square2" id="One4" onclick="move('One4')"><img src="assets/pawn.png" alt="" class="piece" id="white4"onclick="clicked('white4','One4')"></div>
-	<div class="square1"id="One5" onclick="move('One5')"><img src="assets/pawn.png" alt="" class="piece" id="white5"onclick="clicked('white5','One5')"></div>
-	<div class="square2"id="One6" onclick="move('One6')"><img src="assets/pawn.png" alt="" class="piece" id="white6"onclick="clicked('white6','One6')"></div>
-	<div class="square1"id="One7" onclick="move('One7')"><img src="assets/pawn.png" alt="" class="piece" id="white7"onclick="clicked('white7','One7')"></div>
-	<div class="square2"id="One8" onclick="move('One8')"><img src="assets/pawn.png" alt="" class="piece" id="white8"onclick="clicked('white8','One8')"></div>
-</div>
+
 
 <div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
-     <div class="square2" id="Two1" onclick="move('Two1')"><img src="assets/rook.png" alt="" class="bpiece" id="white9"onclick="clicked('white9','Two1')"></div>
-     <div class="square1" id="Two2" onclick="move('Two2')"><img src="assets/bishop.png" alt="" class="bpiece" id="white10"onclick="clicked('white10','Two2')"></div>
-     <div class="square2"id="Two3" onclick="move('Two3')"><img src="assets/knight.png" alt="" class="bpiece" id="white11"onclick="clicked('white11','Two3')"></div>
-     <div class="square1" id="Two4" onclick="move('Two4')"><img src="assets/queen.png" alt="" class="bpiece" id="white12"onclick="clicked('white12','Two4')"></div>
-     <div class="square2"id="Two5" onclick="move('Two5')"><img src="assets/king.png" alt="" class="bpiece" id="white13"onclick="clicked('white13','Two5')"></div>
-     <div class="square1"id="Two6" onclick="move('Two6')"><img src="assets/knight.png" alt="" class="bpiece" id="white14"onclick="clicked('white14','Two6')"></div>
-     <div class="square2"id="Two7" onclick="move('Two7')"><img src="assets/bishop.png" alt="" class="bpiece" id="white15"onclick="clicked('white15','Two7')"></div>
-     <div class="square1"id="Two8" onclick="move('Two8')"><img src="assets/rook.png" alt="" class="piece" id="white16"onclick="clicked('white16','Two8')"></div>
+     <div class="square1" id="One1" onclick="move('One1')"><img src="assets/rook.png" alt="" class="bpiece" id="white9"onclick="clicked('white9','One1')"></div>
+     <div class="square2" id="One2" onclick="move('One2')"><img src="assets/knight.png" alt="" class="bpiece" id="white11"onclick="clicked('white11','One2')"></div>
+     <div class="square1"id="One3" onclick="move('One3')"><img src="assets/bishop.png" alt="" class="bpiece" id="white10"onclick="clicked('white10','One3')"></div>
+     <div class="square2" id="One4" onclick="move('One4')"><img src="assets/king.png" alt="" class="bpiece" id="white13"onclick="clicked('white13','One4')"></div>
+     <div class="square1"id="One5" onclick="move('One5')"><img src="assets/queen.png" alt="" class="bpiece" id="white12"onclick="clicked('white12','One5')"></div>
+     <div class="square2"id="One6" onclick="move('One6')"><img src="assets/bishop.png" alt="" class="bpiece" id="white15"onclick="clicked('white15','One6')"></div>
+     <div class="square1"id="One7" onclick="move('One7')"><img src="assets/knight.png" alt="" class="bpiece" id="white14"onclick="clicked('white14','One7')"></div>
+     <div class="square2"id="One8" onclick="move('One8')"><img src="assets/rook.png" alt="" class="piece" id="white16"onclick="clicked('white16','One8')"></div>
+</div>
+ <div class="row" style="width: 100%;display:flex;flex-wrap: wrap;">
+	<div class="square2" id="Two1" onclick="move('Two1')"><img src="assets/pawn.png" alt="" class="piece" id="white1"onclick="clicked('white1','Two1')"></div>
+	<div class="square1" id="Two2"onclick="move('Two2')"><img src="assets/pawn.png" alt="" class="piece" id="white2"onclick="clicked('white2','Two2')"></div>
+	<div class="square2" id="Two3" onclick="move('Two3')"><img src="assets/pawn.png" alt="" class="piece" id="white3"onclick="clicked('white3','Two3')"></div>
+	<div class="square1" id="Two4" onclick="move('Two4')"><img src="assets/pawn.png" alt="" class="piece" id="white4"onclick="clicked('white4','Two4')"></div>
+	<div class="square2"id="Two5" onclick="move('Two5')"><img src="assets/pawn.png" alt="" class="piece" id="white5"onclick="clicked('white5','Two5')"></div>
+	<div class="square1"id="Two6" onclick="move('Two6')"><img src="assets/pawn.png" alt="" class="piece" id="white6"onclick="clicked('white6','Two6')"></div>
+	<div class="square2"id="Two7" onclick="move('Two7')"><img src="assets/pawn.png" alt="" class="piece" id="white7"onclick="clicked('white7','Two7')"></div>
+	<div class="square1"id="Two8" onclick="move('Two8')"><img src="assets/pawn.png" alt="" class="piece" id="white8"onclick="clicked('white8','Two8')"></div>
 </div>
 <div class="row" style="width: 100%;display: flex;flex-wrap: wrap;">
 	<div class="square1" id="Three1" onclick="move('Three1')"></div>
@@ -71,27 +72,28 @@
      <div class="square2"id="Six7" onclick="move('Six7')"></div>
      <div class="square1"id="Six8" onclick="move('Six8')"></div>
 </div>
+<div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
+     <div class="square1"id="Seven1" onclick="move('Seven1')"> <img src="assets/pawn2.png" alt="" class="bpiece" id ="black1"onclick="clicked('black1','Seven1')"></div>
+     <div class="square2"id="Seven2" onclick="move('Seven2')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black2"onclick="clicked('black2','Seven2')"></div>
+     <div class="square1"id="Seven3" onclick="move('Seven3')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black3"onclick="clicked('black3','Seven3')"></div>
+     <div class="square2"id="Seven4" onclick="move('Seven4')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black4"onclick="clicked('black4','Seven4')"></div>
+     <div class="square1"id="Seven5" onclick="move('Seven5')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black5"onclick="clicked('black5','Seven5')"></div>
+     <div class="square2"id="Seven6" onclick="move('Seven6')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black6"onclick="clicked('black6','Seven6')"></div>
+     <div class="square1"id="Seven7" onclick="move('Seven7')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black7"onclick="clicked('black7','Seven7')"></div>
+     <div class="square2"id="Seven8" onclick="move('Seven8')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black8"onclick="clicked('black8','Seven8')"></div>
+</div>
 <div class="row" style="width: 100%;display: flex;flex-wrap: wrap;">
-	<div class="square1"id="Seven1" onclick="move('Seven1')"><img src="assets/rook2.png" class="piece" id="black9" onclick="clicked('black9','Seven1')"></div>
-	<div class="square2"id="Seven2" onclick="move('Seven2')"><img src="assets/bishop2.png" class="piece" id="black10" onclick="clicked('black10','Seven2')"></div>
-	<div class="square1"id="Seven3" onclick="move('Seven3')"><img src="assets/knight2.png" alt="" class="bpiece" id ="black11"onclick="clicked('black11','Seven3')"></div>
-	<div class="square2"id="Seven4" onclick="move('Seven4')"><img src="assets/queen2.png" alt="" class="bpiece" id ="black12"onclick="clicked('black12','Seven4')"></div>
-	<div class="square1"id="Seven5" onclick="move('Seven5')"><img src="assets/king2.png" alt="" class="bpiece" id ="black13"onclick="clicked('black13','Seven5')"></div>
-	<div class="square2"id="Seven6" onclick="move('Seven6')"><img src="assets/knight2.png" alt="" class="bpiece" id ="black14"onclick="clicked('black14','Seven6')"></div>
-	<div class="square1"id="Seven7" onclick="move('Seven7')"><img src="assets/bishop2.png" alt="" class="bpiece" id ="black15"onclick="clicked('black15','Seven7')"></div>
-	<div class="square2"id="Seven8" onclick="move('Seven8')"><img src="assets/rook2.png" alt="" class="bpiece" id ="black16"onclick="clicked('black16','Seven8')"></div>
+	<div class="square2"id="Eight1" onclick="move('Eight1')"><img src="assets/rook2.png" class="piece" id="black9" onclick="clicked('black9','Eight1')"></div>
+	<div class="square1"id="Eight2" onclick="move('Eight2')"><img src="assets/knight2.png" alt="" class="bpiece" id ="black11"onclick="clicked('black11','Eight2')"></div>
+	<div class="square2"id="Eight3" onclick="move('Eight3')"><img src="assets/bishop2.png" class="piece" id="black10" onclick="clicked('black10','Eight3')"></div>
+	<div class="square1"id="Eight4" onclick="move('Eight4')"><img src="assets/king2.png" alt="" class="bpiece" id ="black13"onclick="clicked('black13','Eight4')"></div>
+	<div class="square2"id="Eight5" onclick="move('Eight5')"><img src="assets/queen2.png" alt="" class="bpiece" id ="black12"onclick="clicked('black12','Eight5')"></div>
+	<div class="square1"id="Eight6" onclick="move('Eight6')"><img src="assets/bishop2.png" alt="" class="bpiece" id ="black15"onclick="clicked('black15','Eight6')"></div>
+	<div class="square2"id="Eight7" onclick="move('Eight7')"><img src="assets/knight2.png" alt="" class="bpiece" id ="black14"onclick="clicked('black14','Eight7')"></div>
+	<div class="square1"id="Eight8" onclick="move('Eight8')"><img src="assets/rook2.png" alt="" class="bpiece" id ="black16"onclick="clicked('black16','Eight8')"></div>
 </div>
 
-<div class="row" style="display: flex;width: 100%;flex-wrap: wrap;">
-     <div class="square2"id="Eight1" onclick="move('Eight1')"> <img src="assets/pawn2.png" alt="" class="bpiece" id ="black1"onclick="clicked('black1','Eight1')"></div>
-     <div class="square1"id="Eight2" onclick="move('Eight2')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black2"onclick="clicked('black2','Eight2')"></div>
-     <div class="square2"id="Eight3" onclick="move('Eight3')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black3"onclick="clicked('black3','Eight3')"></div>
-     <div class="square1"id="Eight4" onclick="move('Eight4')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black4"onclick="clicked('black4','Eight4')"></div>
-     <div class="square2"id="Eight5" onclick="move('Eight5')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black5"onclick="clicked('black5','Eight5')"></div>
-     <div class="square1"id="Eight6" onclick="move('Eight6')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black6"onclick="clicked('black6','Eight6')"></div>
-     <div class="square2"id="Eight7" onclick="move('Eight7')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black7"onclick="clicked('black7','Eight7')"></div>
-     <div class="square1"id="Eight8" onclick="move('Eight8')"><img src="assets/pawn2.png" alt="" class="bpiece"id ="black8"onclick="clicked('black8','Eight8')"></div>
-</div>
+
 </div>
  <!-- ul#nav>li.item$*4>a{Item $} (emmet example)--->
 
